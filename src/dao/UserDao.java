@@ -9,7 +9,7 @@ import entity.User;
 @Repository
 public interface UserDao {
 
-	List<User>   query();//查全部
+	List<User>   queryAll();//查全部
 	
 	User queryById(Integer id);//根据id查单个
 	

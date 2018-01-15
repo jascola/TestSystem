@@ -13,24 +13,24 @@
 
 	<insert id="insert" parameterType="entity.User">
 		insert into
-		user(UserName,quantityPerUnit,unitPrice)
-		values(#{productName},#{quantityPerUnit},#{unitPrice})
+		user(UserName,Password,Identity)
+		values(#{userName},#{password},#{identity})
 	</insert>
 
-	<update id="update" parameterType="entity.Products">
-		update products set
-		productName=#{productName},quantityPerUnit=#{quantityPerUnit},unitPrice=#{unitPrice}
-		where productID=#{productID}
+	<update id="update" parameterType="entity.User">
+		update User set
+		UserName=#{userName},Password=#{password},Identity=#{identity}
+		where UserID=#{userId}
 	</update>
 
 	<delete id="delete" parameterType="java.lang.Integer">
-		delete from products where
-		productID=#{productID}
+		delete from user where
+		=#{userId}
 	</delete>
 
-	<select id="queryOne" parameterType="java.lang.Integer"
-		resultType="entity.Products">
-		select * from products where productID=#{productID}
+	<select id="queryAll" parameterType="java.lang.Integer"
+		resultType="entity.User">
+		select * from user where UserId=#{userId}
 	</select>
 
 </mapper>
