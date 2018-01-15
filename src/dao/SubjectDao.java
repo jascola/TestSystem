@@ -10,7 +10,7 @@ import entity.User;
 @Repository
 public interface SubjectDao {
 	
-	List<Subject> query();//查全部
+	List<Subject> queryAll();//查全部
 	
 	Subject queryById(Integer id);//根据id查单个
 	

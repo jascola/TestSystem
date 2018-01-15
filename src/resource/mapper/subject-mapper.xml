@@ -7,7 +7,7 @@
 <mapper namespace="dao.SubjectDao">
 
 
-	<select id="query" resultType="entity.Subject">
+	<select id="queryAll" resultType="entity.Subject">
 		select * from subject 
 	</select>
 
@@ -27,7 +27,7 @@
 		delete from subject where SubjectId=#{subjectId}
 	</delete>
 
-	<select id="queryOne" parameterType="java.lang.Integer"
+	<select id="queryById" parameterType="java.lang.Integer"
 		resultType="entity.Subject">
 		select * from subject where SubjectId=#{subjectId}
 	</select>

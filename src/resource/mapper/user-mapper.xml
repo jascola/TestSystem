@@ -7,7 +7,7 @@
 <mapper namespace="dao.UserDao">
 
 
-	<select id="query" resultType="entity.User">
+	<select id="queryAll" resultType="entity.User">
 		select * from user 
 	</select>
 

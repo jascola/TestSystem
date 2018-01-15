@@ -7,32 +7,33 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import dao.UserDao;
-import entity.User;
+import dao.RecognizDao;
+import entity.Recogniz;
+
 
 @Service
-public class UserService {
+public class RecognizService {
 
 	@Autowired
-	private UserDao dao;
-	public List<User> queryAll() {
+	private RecognizDao dao;
+	public List<Recogniz> queryAll() {
 		System.out.println("size:"+this.dao.queryAll().size());
 		return this.dao.queryAll();
 	}
 	
-	public User queryById(Integer id) {
+	public Recogniz queryById(Integer id) {
 		return this.dao.queryById(id);
 	}
 
 	@Transactional
-	public int insert(User user) {
+	public int insert(Recogniz rec) {
 		System.out.println("service zhixing");
-		return this.dao.insert(user);
+		return this.dao.insert(rec);
 	}
 
 	@Transactional
-	public int update(User user) {
-		return this.dao.update(user);
+	public int update(Recogniz rec) {
+		return this.dao.update(rec);
 	}
 
 	@Transactional

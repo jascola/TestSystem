@@ -8,11 +8,14 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="/TestSystem/user/queryAll" method="get">
+<!-- 	<form action="/TestSystem/user/queryAll" method="get">
 		<input type="submit" value="查询All">
-	</form>
+	</form> -->
 
 	<table border="1px">
+		<tr>
+			<td colspan="4">queryAll List</td>
+		</tr>
 		<tr>
 			<th>用户ID</th>
 			<th>用户名</th>
@@ -29,6 +32,28 @@
 				<td>${p.identity }</td>
 			</tr>
 		</c:forEach>
+	</table>
+	<br>
+	<br>
+	
+	<table border="1px">
+		<tr>
+			<td colspan="4">queryById List</td>
+		</tr>
+		<tr>
+			<th>用户ID</th>
+			<th>用户名</th>
+			<th>密码</th>
+			<th>身份</th>
+			<th colspan="2">操作</th>
+		</tr>
+		
+			<tr>
+				<td>${user.userId }</td>
+				<td>${user.userName }</td>
+				<td>${user.password }</td>
+				<td>${user.identity }</td>
+			</tr>
 	</table>
 
 </body>

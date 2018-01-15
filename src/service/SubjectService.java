@@ -7,32 +7,33 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
-import dao.UserDao;
-import entity.User;
+import dao.SubjectDao;
+import entity.Subject;
+
 
 @Service
-public class UserService {
+public class SubjectService {
 
 	@Autowired
-	private UserDao dao;
-	public List<User> queryAll() {
+	private SubjectDao dao;
+	public List<Subject> queryAll() {
 		System.out.println("size:"+this.dao.queryAll().size());
 		return this.dao.queryAll();
 	}
 	
-	public User queryById(Integer id) {
+	public Subject queryById(Integer id) {
 		return this.dao.queryById(id);
 	}
 
 	@Transactional
-	public int insert(User user) {
+	public int insert(Subject sub) {
 		System.out.println("service zhixing");
-		return this.dao.insert(user);
+		return this.dao.insert(sub);
 	}
 
 	@Transactional
-	public int update(User user) {
-		return this.dao.update(user);
+	public int update(Subject sub) {
+		return this.dao.update(sub);
 	}
 
 	@Transactional

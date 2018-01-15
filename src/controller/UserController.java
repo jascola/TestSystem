@@ -43,7 +43,15 @@ public class UserController {
 		List<User> users = this.service.queryAll();
 		model.addAttribute("users", users);
 		System.out.println("queryAll success");
-		return "redirect:/query.jsp";
+		return "/query.jsp";
+	}
+	
+	@RequestMapping("/queryById")
+	public String queryById(Integer id,Model model) {
+		User user = this.service.queryById(id);
+		model.addAttribute("user", user);
+		System.out.println("queryById success");
+		return "/query.jsp";
 	}
 	
 	
