@@ -9,33 +9,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import entity.Subject;
 import entity.User;
-import service.UserService;
-
+import service.SubjectService;
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/subject")
+public class SubjectController {
 
+	
+	
+	
 	@Autowired
-	private UserService service;
-	
-	@RequestMapping("/userlogin")
-	public String userlogin(String name,String password,
-			Integer identity,HttpSession httpSession) {
-		User user =this.service.queryByName(name);
-		if(user.getPassword().equals(password)&&identity==1) {
-			httpSession.setAttribute("user", user);
-			return "student";
-		}
-		else if(user.getPassword().equals(password)&&identity==0) {
-			return "admin";
-		}
-		return "";
-	}
-	
-
+	private SubjectService service;
 	@RequestMapping("/insert")
-	public String insert(User pro) {
+	public String insert(Subject pro) {
 		this.service.insert(pro);
 		System.out.println("insert success");
 		return "redirect:/index.jsp";
@@ -49,28 +36,26 @@ public class UserController {
 	}
 	
 	@RequestMapping("/update")
-	public String update(User user) {
-		this.service.update(user);
+	public String update(Subject sub) {
+		this.service.update(sub);
 		System.out.println("update success");
 		return "redirect:/index.jsp";
 	}
 	
 	@RequestMapping("/queryAll")
 	public String queryAll(Model model) {
-		List<User> users = this.service.queryAll();
-		model.addAttribute("users", users);
+		List<Subject> subjects = this.service.queryAll();
+		model.addAttribute("subjects", subjects);
 		System.out.println("queryAll success");
 		return "/query.jsp";
 	}
 
 	@RequestMapping("/queryById")
 	public String queryById(Integer id,Model model) {
-		User user = this.service.queryById(id);
-		model.addAttribute("user", user);
+		Subject subject = this.service.queryById(id);
+		model.addAttribute("subject", subject);
 		System.out.println("queryById success");
 		return "/query.jsp";
 	}
-	
-	
 	
 }

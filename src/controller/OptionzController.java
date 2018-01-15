@@ -1,42 +1,29 @@
 package controller;
 
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import entity.User;
-import service.UserService;
+import entity.Optionz;
+import service.OptionzService;
+
+
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/optionz")
+public class OptionzController{
 
 	@Autowired
-	private UserService service;
+	private OptionzService service;
 	
-	@RequestMapping("/userlogin")
-	public String userlogin(String name,String password,
-			Integer identity,HttpSession httpSession) {
-		User user =this.service.queryByName(name);
-		if(user.getPassword().equals(password)&&identity==1) {
-			httpSession.setAttribute("user", user);
-			return "student";
-		}
-		else if(user.getPassword().equals(password)&&identity==0) {
-			return "admin";
-		}
-		return "";
-	}
+	
 	
 
 	@RequestMapping("/insert")
-	public String insert(User pro) {
-		this.service.insert(pro);
+	public String insert(Optionz Optionz) {
+		this.service.insert(Optionz);
 		System.out.println("insert success");
 		return "redirect:/index.jsp";
 	}
@@ -49,24 +36,24 @@ public class UserController {
 	}
 	
 	@RequestMapping("/update")
-	public String update(User user) {
-		this.service.update(user);
+	public String update(Optionz Optionz) {
+		this.service.update(Optionz);
 		System.out.println("update success");
 		return "redirect:/index.jsp";
 	}
 	
 	@RequestMapping("/queryAll")
 	public String queryAll(Model model) {
-		List<User> users = this.service.queryAll();
-		model.addAttribute("users", users);
+		List<Optionz> optionzs = this.service.queryAll();
+		model.addAttribute("optionzs", optionzs);
 		System.out.println("queryAll success");
 		return "/query.jsp";
 	}
 
 	@RequestMapping("/queryById")
 	public String queryById(Integer id,Model model) {
-		User user = this.service.queryById(id);
-		model.addAttribute("user", user);
+		Optionz Optionz = this.service.queryById(id);
+		model.addAttribute("Optionz", Optionz);
 		System.out.println("queryById success");
 		return "/query.jsp";
 	}

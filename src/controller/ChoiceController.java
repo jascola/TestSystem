@@ -1,42 +1,27 @@
 package controller;
 
 import java.util.List;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import entity.User;
-import service.UserService;
+import entity.Choice;
+import service.ChoiceService;
 
 @Controller
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/choice")
+public class ChoiceController{
 
 	@Autowired
-	private UserService service;
+	private ChoiceService service;
 	
-	@RequestMapping("/userlogin")
-	public String userlogin(String name,String password,
-			Integer identity,HttpSession httpSession) {
-		User user =this.service.queryByName(name);
-		if(user.getPassword().equals(password)&&identity==1) {
-			httpSession.setAttribute("user", user);
-			return "student";
-		}
-		else if(user.getPassword().equals(password)&&identity==0) {
-			return "admin";
-		}
-		return "";
-	}
+	
 	
 
 	@RequestMapping("/insert")
-	public String insert(User pro) {
-		this.service.insert(pro);
+	public String insert(Choice choice) {
+		this.service.insert(choice);
 		System.out.println("insert success");
 		return "redirect:/index.jsp";
 	}
@@ -49,24 +34,24 @@ public class UserController {
 	}
 	
 	@RequestMapping("/update")
-	public String update(User user) {
-		this.service.update(user);
+	public String update(Choice choice) {
+		this.service.update(choice);
 		System.out.println("update success");
 		return "redirect:/index.jsp";
 	}
 	
 	@RequestMapping("/queryAll")
 	public String queryAll(Model model) {
-		List<User> users = this.service.queryAll();
-		model.addAttribute("users", users);
+		List<Choice> choices = this.service.queryAll();
+		model.addAttribute("choices", choices);
 		System.out.println("queryAll success");
 		return "/query.jsp";
 	}
 
 	@RequestMapping("/queryById")
 	public String queryById(Integer id,Model model) {
-		User user = this.service.queryById(id);
-		model.addAttribute("user", user);
+		Choice choice = this.service.queryById(id);
+		model.addAttribute("choice", choice);
 		System.out.println("queryById success");
 		return "/query.jsp";
 	}

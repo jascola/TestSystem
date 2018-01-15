@@ -23,6 +23,9 @@ public class UserService {
 	public User queryById(Integer id) {
 		return this.dao.queryById(id);
 	}
+	public User queryByName(String name) {
+		return this.dao.queryByName(name);
+	}
 
 	@Transactional
 	public int insert(User user) {
@@ -39,4 +42,5 @@ public class UserService {
 	public int delete(Integer id) {
 		return this.dao.delete(id);
 	}
+	
 }

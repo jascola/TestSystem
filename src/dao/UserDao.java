@@ -20,4 +20,6 @@ public interface UserDao {
 	
 	int update(User user);
 	
+	User queryByName(String str);
+	
 }
