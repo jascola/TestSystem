@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespcae原来指命名空间 -->
+<!-- 现在namespace指要映射给哪个接口 -->
+<mapper namespace="dao.UserDao">
+
+
+	<select id="query" resultType="entity.User">
+		select * from user 
+	</select>
+
+	<insert id="insert" parameterType="entity.User">
+		insert into
+		user(UserName,quantityPerUnit,unitPrice)
+		values(#{productName},#{quantityPerUnit},#{unitPrice})
+	</insert>
+
+	<update id="update" parameterType="entity.Products">
+		update products set
+		productName=#{productName},quantityPerUnit=#{quantityPerUnit},unitPrice=#{unitPrice}
+		where productID=#{productID}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from products where
+		productID=#{productID}
+	</delete>
+
+	<select id="queryOne" parameterType="java.lang.Integer"
+		resultType="entity.Products">
+		select * from products where productID=#{productID}
+	</select>
+
+</mapper>

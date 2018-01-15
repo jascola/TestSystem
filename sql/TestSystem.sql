@@ -28,7 +28,7 @@ CREATE TABLE `option` (
   Conten VARCHAR(255) not null,
   ChoiceId int not null,
   IsRight int not null,
-  FOREIGN KEY (ChoiceId) REFERENCES subject(ChoiceId)
+  FOREIGN KEY (ChoiceId) REFERENCES choice(ChoiceId)
 )DEFAULT CHARSET=utf8;
 
 CREATE TABLE `completion`(
