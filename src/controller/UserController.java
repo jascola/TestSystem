@@ -43,7 +43,7 @@ public class UserController {
 		List<User> users = this.service.queryAll();
 		model.addAttribute("users", users);
 		System.out.println("queryAll success");
-		return "redirect:/query.jsp";
+		return "/query.jsp";
 	}
 	
 	
