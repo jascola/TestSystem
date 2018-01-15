@@ -7,7 +7,7 @@
 <mapper namespace="dao.ChoiceDao">
 
 
-	<select id="query" resultType="entity.Choice">
+	<select id="queryAll" resultType="entity.Choice">
 		select * from choice 
 	</select>
 
@@ -27,7 +27,7 @@
 		delete from choice where ChoiceId=#{choiceId}
 	</delete>
 
-	<select id="queryAll" parameterType="java.lang.Integer"
+	<select id="queryById" parameterType="java.lang.Integer"
 		resultType="entity.Choice">
 		select * from choice where ChoiceId=#{choiceId}
 	</select>

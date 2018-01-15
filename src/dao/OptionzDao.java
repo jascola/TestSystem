@@ -10,9 +10,9 @@ import entity.Subject;
 @Repository
 public interface OptionzDao {
 	
-	List<Optionz> query();//查全部
+	List<Optionz> queryAll();//查全部
 	
-	Subject queryById(Integer id);//根据id查单个
+	Optionz queryById(Integer id);//根据id查单个
 	
 	int insert(Optionz op);//插入一个实体
 	

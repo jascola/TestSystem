@@ -7,7 +7,7 @@
 <mapper namespace="dao.CompletionDao">
 
 
-	<select id="query" resultType="entity.Completion">
+	<select id="queryAll" resultType="entity.Completion">
 		select * from completion 
 	</select>
 
@@ -27,7 +27,7 @@
 		delete from completion where CompletionId=#{completionId}
 	</delete>
 
-	<select id="queryAll" parameterType="java.lang.Integer"
+	<select id="queryById" parameterType="java.lang.Integer"
 		resultType="entity.Completion">
 		select * from completion where CompletionId=#{completionId}
 	</select>

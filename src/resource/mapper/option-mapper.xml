@@ -10,7 +10,7 @@
 <mapper namespace="dao.OptionzDao">
 
 
-	<select id="query" resultType="entity.Optionz">
+	<select id="queryAll" resultType="entity.Optionz">
 		select * from optionz 
 	</select>
 
@@ -30,7 +30,7 @@
 		delete from optionz where OptionzId=#{optionzId}
 	</delete>
 
-	<select id="queryAll" parameterType="java.lang.Integer"
+	<select id="queryById" parameterType="java.lang.Integer"
 		resultType="entity.Optionz">
 		select * from optionz where OptionzId=#{optionzId}
 	</select>

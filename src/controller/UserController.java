@@ -45,14 +45,7 @@ public class UserController {
 		System.out.println("queryAll success");
 		return "/query.jsp";
 	}
-	
-	@RequestMapping("/queryById")
-	public String queryById(Integer id,Model model) {
-		User user = this.service.queryById(id);
-		model.addAttribute("user", user);
-		System.out.println("queryById success");
-		return "/query.jsp";
-	}
+
 	
 	
 	
