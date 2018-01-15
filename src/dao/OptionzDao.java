@@ -19,4 +19,6 @@ public interface OptionzDao {
 	int delete(Integer id);
 	
 	int update(Optionz op);
+	
+	List<Optionz> queryByChoiceId(Integer id);
 }

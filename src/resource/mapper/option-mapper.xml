@@ -34,5 +34,10 @@
 		resultType="entity.Optionz">
 		select * from optionz where OptionzId=#{optionzId}
 	</select>
+	
+	<select id="queryByChoiceId" parameterType="java.lang.Integer"
+		resultType="entity.Optionz">
+		select * from optionz where ChoiceId=#{choiceId}
+	</select>
 
 </mapper>
