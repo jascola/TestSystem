@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import entity.Completion;
-import entity.Option;
+import entity.Optionz;
 import entity.Subject;
 
 @Repository

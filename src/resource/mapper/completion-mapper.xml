@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespcae原来指命名空间 -->
+<!-- 现在namespace指要映射给哪个接口 -->
+<mapper namespace="dao.CompletionDao">
+
+
+	<select id="query" resultType="entity.Completion">
+		select * from completion 
+	</select>
+
+	<insert id="insert" parameterType="entity.Completion">
+		insert into
+		completion(SubjectId,Content,Answer)
+		values(#{subjectId},#{content},#{answer})
+	</insert>
+
+	<update id="update" parameterType="entity.Completion">
+		update Completion set
+		SubjectId=#{subjectId},Content=#{content},Answer=#{answer}
+		where CompletionId=#{completionId}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from completion where CompletionId=#{completionId}
+	</delete>
+
+	<select id="queryAll" parameterType="java.lang.Integer"
+		resultType="entity.Completion">
+		select * from completion where CompletionId=#{completionId}
+	</select>
+
+</mapper>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.ui.Model;
 
 import dao.UserDao;
 import entity.User;
@@ -23,14 +24,14 @@ public class UserService {
 	}
 
 	@Transactional
-	public int insert(User pro) {
+	public int insert(User user) {
 		System.out.println("service zhixing");
-		return this.dao.insert(pro);
+		return this.dao.insert(user);
 	}
 
 	@Transactional
-	public int update(User pro) {
-		return this.dao.update(pro);
+	public int update(User user) {
+		return this.dao.update(user);
 	}
 
 	@Transactional

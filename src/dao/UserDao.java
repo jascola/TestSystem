@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 
 import entity.User;
 

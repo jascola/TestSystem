@@ -3,13 +3,13 @@ package entity;
 /*`completion`的实体类*/
 public class Completion {
 
-	private Integer recognizId;
+	private Integer completionId;
 	private Integer subjectId;
 	private String content;
 	private String answer;
-	public Completion(Integer recognizId, Integer subjectId, String content, String answer) {
+	public Completion(Integer completionId, Integer subjectId, String content, String answer) {
 		super();
-		this.recognizId = recognizId;
+		this.completionId = completionId;
 		this.subjectId = subjectId;
 		this.content = content;
 		this.answer = answer;
@@ -17,12 +17,7 @@ public class Completion {
 	public Completion() {
 		
 	}
-	public Integer getRecognizId() {
-		return recognizId;
-	}
-	public void setRecognizId(Integer recognizId) {
-		this.recognizId = recognizId;
-	}
+	
 	public Integer getSubjectId() {
 		return subjectId;
 	}
@@ -47,7 +42,7 @@ public class Completion {
 		int result = 1;
 		result = prime * result + ((answer == null) ? 0 : answer.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
-		result = prime * result + ((recognizId == null) ? 0 : recognizId.hashCode());
+		result = prime * result + ((completionId == null) ? 0 : completionId.hashCode());
 		result = prime * result + ((subjectId == null) ? 0 : subjectId.hashCode());
 		return result;
 	}
@@ -70,10 +65,10 @@ public class Completion {
 				return false;
 		} else if (!content.equals(other.content))
 			return false;
-		if (recognizId == null) {
-			if (other.recognizId != null)
+		if (completionId == null) {
+			if (other.completionId != null)
 				return false;
-		} else if (!recognizId.equals(other.recognizId))
+		} else if (!completionId.equals(other.completionId))
 			return false;
 		if (subjectId == null) {
 			if (other.subjectId != null)
@@ -82,10 +77,17 @@ public class Completion {
 			return false;
 		return true;
 	}
+	public Integer getCompletionId() {
+		return completionId;
+	}
+	public void setCompletionId(Integer completionId) {
+		this.completionId = completionId;
+	}
 	@Override
 	public String toString() {
-		return "Completion [recognizId=" + recognizId + ", subjectId=" + subjectId + ", content=" + content
+		return "Completion [completionId=" + completionId + ", subjectId=" + subjectId + ", content=" + content
 				+ ", answer=" + answer + "]";
 	}
+
 	
 }

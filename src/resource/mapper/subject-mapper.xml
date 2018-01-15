@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespcae原来指命名空间 -->
+<!-- 现在namespace指要映射给哪个接口 -->
+<mapper namespace="dao.SubjectDao">
+
+
+	<select id="query" resultType="entity.Subject">
+		select * from subject 
+	</select>
+
+	<insert id="insert" parameterType="entity.Subject">
+		insert into
+		subject(SubjectName)
+		values(#{subjectName})
+	</insert>
+
+	<update id="update" parameterType="entity.Subject">
+		update subject set
+		SubjectName=#{subjectName}
+		where SubjectId=#{subjectId}
+	</update>
+
+	<delete id="delete" parameterType="java.lang.Integer">
+		delete from subject where SubjectId=#{subjectId}
+	</delete>
+
+	<select id="queryOne" parameterType="java.lang.Integer"
+		resultType="entity.Subject">
+		select * from subject where SubjectId=#{subjectId}
+	</select>
+
+</mapper>

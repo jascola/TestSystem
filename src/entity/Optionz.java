@@ -1,27 +1,27 @@
 package entity;
 
 /*`option`表的实体类*/
-public class Option {
+public class Optionz {
 
-	private Integer optionId;
+	private Integer optionzId;
 	private String content;
 	private Integer choiceId;
 	private Integer isRight;
-	public Option(Integer optionId, String content, Integer choiceId, Integer isRight) {
+	public Optionz(Integer optionzId, String content, Integer choiceId, Integer isRight) {
 		super();
-		this.optionId = optionId;
+		this.optionzId = optionzId;
 		this.content = content;
 		this.choiceId = choiceId;
 		this.isRight = isRight;
 	}
-	public Option() {
+	public Optionz() {
 		
 	}
-	public Integer getOptionId() {
-		return optionId;
+	public Integer getOptionzId() {
+		return optionzId;
 	}
-	public void setOptionId(Integer optionId) {
-		this.optionId = optionId;
+	public void setOptionzId(Integer optionzId) {
+		this.optionzId = optionzId;
 	}
 	public String getContent() {
 		return content;
@@ -48,7 +48,7 @@ public class Option {
 		result = prime * result + ((choiceId == null) ? 0 : choiceId.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((isRight == null) ? 0 : isRight.hashCode());
-		result = prime * result + ((optionId == null) ? 0 : optionId.hashCode());
+		result = prime * result + ((optionzId == null) ? 0 : optionzId.hashCode());
 		return result;
 	}
 	@Override
@@ -59,7 +59,7 @@ public class Option {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Option other = (Option) obj;
+		Optionz other = (Optionz) obj;
 		if (choiceId == null) {
 			if (other.choiceId != null)
 				return false;
@@ -75,16 +75,16 @@ public class Option {
 				return false;
 		} else if (!isRight.equals(other.isRight))
 			return false;
-		if (optionId == null) {
-			if (other.optionId != null)
+		if (optionzId == null) {
+			if (other.optionzId != null)
 				return false;
-		} else if (!optionId.equals(other.optionId))
+		} else if (!optionzId.equals(other.optionzId))
 			return false;
 		return true;
 	}
 	@Override
 	public String toString() {
-		return "Option [optionId=" + optionId + ", content=" + content + ", choiceId=" + choiceId + ", isRight="
+		return "Option [optionzId=" + optionzId + ", content=" + content + ", choiceId=" + choiceId + ", isRight="
 				+ isRight + "]";
 	}
 	

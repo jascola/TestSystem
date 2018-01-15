@@ -18,17 +18,16 @@
 	</insert>
 
 	<update id="update" parameterType="entity.User">
-		update User set
+		update user set
 		UserName=#{userName},Password=#{password},Identity=#{identity}
-		where UserID=#{userId}
+		where UserId=#{userId}
 	</update>
 
 	<delete id="delete" parameterType="java.lang.Integer">
-		delete from user where
-		=#{userId}
+		delete from user where UserId=#{userId}
 	</delete>
 
-	<select id="queryAll" parameterType="java.lang.Integer"
+	<select id="queryById" parameterType="java.lang.Integer"
 		resultType="entity.User">
 		select * from user where UserId=#{userId}
 	</select>

@@ -23,16 +23,16 @@ CREATE TABLE  `choice`(
   FOREIGN KEY (SubjectId) REFERENCES subject(SubjectId)
 )DEFAULT CHARSET=utf8;
 
-CREATE TABLE `option` (
-  OptionId int AUTO_INCREMENT PRIMARY KEY,
-  Conten VARCHAR(255) not null,
+CREATE TABLE `optionz` (
+  OptionzId int AUTO_INCREMENT PRIMARY KEY,
+  Content VARCHAR(255) not null,
   ChoiceId int not null,
   IsRight int not null,
   FOREIGN KEY (ChoiceId) REFERENCES choice(ChoiceId)
 )DEFAULT CHARSET=utf8;
 
 CREATE TABLE `completion`(
-  RecognizId int AUTO_INCREMENT PRIMARY KEY ,
+  CompletionId int AUTO_INCREMENT PRIMARY KEY ,
   SubjectId INT NOT NULL ,
   Content VARCHAR(255) NOT NULL ,
   Answer VARCHAR(20) NOT NULL ,
