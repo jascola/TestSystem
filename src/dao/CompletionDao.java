@@ -11,9 +11,9 @@ import entity.Subject;
 @Repository
 public interface CompletionDao {
 	
-	List<Completion> query();//查全部
+	List<Completion> queryAll();//查全部
 	
-	Subject queryById(Integer id);//根据id查单个
+	Completion queryById(Integer id);//根据id查单个
 	
 	int insert(Completion com);//插入一个实体
 	
