@@ -17,7 +17,7 @@ public class RecognizService {
 	@Autowired
 	private RecognizDao dao;
 	public List<Recogniz> queryAll() {
-		System.out.println("size:"+this.dao.queryAll().size());
+		/*System.out.println("size:"+this.dao.queryAll().size());*/
 		return this.dao.queryAll();
 	}
 	

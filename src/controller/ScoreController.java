@@ -20,6 +20,9 @@ public class ScoreController{
 	
 	
 	
+	
+	
+	
 
 	@RequestMapping("/insert")
 	public String insert(Score Score) {
