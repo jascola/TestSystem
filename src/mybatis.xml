@@ -8,5 +8,12 @@
 	<mappers>
 		<mapper resource="resource/mapper/user-mapper.xml" />
 		<mapper resource="resource/mapper/subject-mapper.xml" />
+		<mapper resource="resource/mapper/choice-mapper.xml" />
+		<mapper resource="resource/mapper/option-mapper.xml" />
+		<mapper resource="resource/mapper/recogniz-mapper.xml" />
+		<mapper resource="resource/mapper/score-mapper.xml" />
+		<mapper resource="resource/mapper/subject-mapper.xml" />
+		<mapper resource="resource/mapper/completion-mapper.xml" />
+
 	</mappers>
 </configuration>

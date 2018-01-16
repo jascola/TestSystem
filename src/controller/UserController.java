@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import entity.UserQueryDto;
 import service.UserService;
 
 @Controller
+@Scope
 @RequestMapping("/user")
 public class UserController {
 
@@ -21,9 +23,9 @@ public class UserController {
 	private UserService service;
 	
 	@RequestMapping("/userlogin")
-	public String userlogin(String name,String password,
+	public String userlogin(String userName,String password,
 			Integer identity,HttpSession httpSession) {
-		User user =this.service.queryByName(name);
+		User user =this.service.queryByName(userName);
 		if(user.getPassword().equals(password)&&identity==1) {
 			httpSession.setAttribute("user", user);
 			return "student";
