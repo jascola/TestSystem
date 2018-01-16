@@ -9,7 +9,7 @@
 <body>
 	<form id="form" action="/TestSystem/optionz/insert" method="get">
 		
-		<input type="hidden" name="choice.choiceId" value="${choice.choiceId}"/>
+		<input type="hidden" name="choice.choiceId" value="${choice.choiceId}" id="ii"/>
 		题目id:${choice.choiceId }<br>
 		题目：${choice.content }<br>
 		选项描述：&nbsp;正确性：<br>
@@ -50,7 +50,7 @@
 		op1.value="0";
 		var op2=document.createElement("option");
 		op2.text="正确选项";
-		op1.value="1";
+		op2.value="1";
 		
 		newInput3.add(op1);
 		newInput3.add(op2);
@@ -67,18 +67,38 @@
 	}
 	
 	
-	 var inputs = document.getElementsByName("content");   
-	 var isrighr=document.getElementsByName("isRight");  
-	 
+	
 	 function su(){
-		 $.ajax({
-				url:"/TestSystem/optionz/insert",
-				
+		 var inputs = document.getElementsByName("content");   
+ 		 var select=document.getElementsByName("isRight");  
+ 		 var id = document.getElementById("ii");   
+ 		 var inputarr= new Array();
+ 		 var selectarr =new Array();
+ 		var idd =id.value;
+ 		 for(var i=0;i<inputs.length;i++){
+ 			 inputarr.push(inputs[i].value);
+ 		 }
+ 		 for(var i=0;i<select.length;i++){
+ 			
+ 			var value = select[i].value; // 选中值
+ 			 selectarr.push(value);
+ 		 }
+ 		 
+		 console.log(id);
+		  $.ajax({
+				url:"/TestSystem/optionz/insertlist",
+				data:{
+					"choiceId":idd,
+					"questions":inputarr,
+					"isRight":selectarr
+					
+				},
+				dataType : "json",
 				success:function(result){
 					console.log(result);
 				}
 				
-			});
+			}); 
 		 
 		 
 	 }
