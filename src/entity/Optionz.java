@@ -5,18 +5,8 @@ public class Optionz {
 
 	private Integer optionzId;
 	private String content;
-	private Integer choiceId;
+	private Choice choice;
 	private Integer isRight;
-	public Optionz(Integer optionzId, String content, Integer choiceId, Integer isRight) {
-		super();
-		this.optionzId = optionzId;
-		this.content = content;
-		this.choiceId = choiceId;
-		this.isRight = isRight;
-	}
-	public Optionz() {
-		
-	}
 	public Integer getOptionzId() {
 		return optionzId;
 	}
@@ -29,11 +19,11 @@ public class Optionz {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public Integer getChoiceId() {
-		return choiceId;
+	public Choice getChoice() {
+		return choice;
 	}
-	public void setChoiceId(Integer choiceId) {
-		this.choiceId = choiceId;
+	public void setChoice(Choice choice) {
+		this.choice = choice;
 	}
 	public Integer getIsRight() {
 		return isRight;
@@ -41,11 +31,27 @@ public class Optionz {
 	public void setIsRight(Integer isRight) {
 		this.isRight = isRight;
 	}
+	public Optionz(Integer optionzId, String content, Choice choice, Integer isRight) {
+		super();
+		this.optionzId = optionzId;
+		this.content = content;
+		this.choice = choice;
+		this.isRight = isRight;
+	}
+	public Optionz() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "Optionz [optionzId=" + optionzId + ", content=" + content + ", choice=" + choice + ", isRight="
+				+ isRight + "]";
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((choiceId == null) ? 0 : choiceId.hashCode());
+		result = prime * result + ((choice == null) ? 0 : choice.hashCode());
 		result = prime * result + ((content == null) ? 0 : content.hashCode());
 		result = prime * result + ((isRight == null) ? 0 : isRight.hashCode());
 		result = prime * result + ((optionzId == null) ? 0 : optionzId.hashCode());
@@ -60,10 +66,10 @@ public class Optionz {
 		if (getClass() != obj.getClass())
 			return false;
 		Optionz other = (Optionz) obj;
-		if (choiceId == null) {
-			if (other.choiceId != null)
+		if (choice == null) {
+			if (other.choice != null)
 				return false;
-		} else if (!choiceId.equals(other.choiceId))
+		} else if (!choice.equals(other.choice))
 			return false;
 		if (content == null) {
 			if (other.content != null)
@@ -82,10 +88,6 @@ public class Optionz {
 			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "Option [optionzId=" + optionzId + ", content=" + content + ", choiceId=" + choiceId + ", isRight="
-				+ isRight + "]";
-	}
+	
 	
 }

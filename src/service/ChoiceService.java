@@ -24,7 +24,7 @@ public class ChoiceService {
 
 	@Transactional
 	public int insert(Choice pro) {
-		
+		System.out.println(pro);
 		return this.dao.insert(pro);
 	}
 

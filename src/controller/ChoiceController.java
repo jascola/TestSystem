@@ -17,15 +17,13 @@ public class ChoiceController{
 
 	@Autowired
 	private ChoiceService service;
-	
-	
-	
 
 	@RequestMapping("/insert")
 	public String insert(Choice choice) {
+		
 		this.service.insert(choice);
 		System.out.println("insert success");
-		return "redirect:/index.jsp";
+		return "/admin/addOptionz.jsp";
 	}
 	
 	@RequestMapping("/delete")

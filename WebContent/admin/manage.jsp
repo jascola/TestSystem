@@ -31,8 +31,7 @@
 	</li>
 	<li>题库管理
 		<ul>
-			<li><a href="">添加单选题</a></li>
-			<li><a href="">添加多选题</a></li>
+			<li><a href="addChoice.jsp">添加选择题</a></li>
 			<li><a href="">添加填空题</a></li>
 			<li><a href="">添加判断题</a></li>
 			<li><a href="">题目查询与修改</a></li>

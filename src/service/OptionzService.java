@@ -24,14 +24,13 @@ public class OptionzService {
 		return this.dao.queryByChoiceId(id);
 	}
 	@Transactional
-	public int insert(Optionz pro) {
-		
-		return this.dao.insert(pro);
+	public int insert(Optionz op) {
+		return this.dao.insert(op);
 	}
 
 	@Transactional
-	public int update(Optionz pro) {
-		return this.dao.update(pro);
+	public int update(Optionz op) {
+		return this.dao.update(op);
 	}
 
 	@Transactional

@@ -11,7 +11,13 @@
 		select * from choice 
 	</select>
 
-	<insert id="insert" parameterType="entity.Choice">
+<!-- 	<insert id="insert_returnId" parameterType="entity.Choice">
+		insert into
+		choice(SubjectId,Content,IsMulti)
+		values(#{subjectId},#{content},#{isMulti})
+	</insert> -->
+	
+	<insert id="insert" parameterType="entity.Choice" useGeneratedKeys="true" keyColumn="choiceId" keyProperty="choiceId">
 		insert into
 		choice(SubjectId,Content,IsMulti)
 		values(#{subjectId},#{content},#{isMulti})

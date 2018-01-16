@@ -19,15 +19,23 @@ public class OptionzController{
 
 	@Autowired
 	private OptionzService service;
-	
-	
-	
 
+	
+	public String insertList() {
+		
+		
+		
+		
+		
+		return "";
+	}
+	
 	@RequestMapping("/insert")
-	public String insert(Optionz Optionz) {
-		this.service.insert(Optionz);
+	public String insert(Optionz op) {
+		System.out.println(op);
+		this.service.insert(op);
 		System.out.println("insert success");
-		return "redirect:/index.jsp";
+		return "/admin/addOptionz.jsp";
 	}
 	
 	@RequestMapping("/delete")

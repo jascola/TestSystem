@@ -17,12 +17,12 @@
 	<insert id="insert" parameterType="entity.Optionz">
 		insert into
 		Optionz(Content,ChoiceId,IsRight)
-		values(#{content},#{choiceId},#{isRight})
+		values(#{content},#{choice.choiceId},#{isRight})
 	</insert>
 
 	<update id="update" parameterType="entity.Optionz">
 		update optionz set
-		Content=#{content},ChoidId=#{choiceId},IsRight=#{isRight}
+		Content=#{content},ChoidId=#{choice.choiceId},IsRight=#{isRight}
 		where OptionzID=#{optionzId}
 	</update>
 
@@ -37,7 +37,7 @@
 	
 	<select id="queryByChoiceId" parameterType="java.lang.Integer"
 		resultType="entity.Optionz">
-		select * from optionz where ChoiceId=#{choiceId}
+		select * from optionz where ChoiceId=#{choice.choiceId}
 	</select>
 
 </mapper>

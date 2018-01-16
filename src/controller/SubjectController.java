@@ -1,7 +1,10 @@
 package controller;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +12,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.fastjson.JSONObject;
 
 import entity.Subject;
 import entity.User;
@@ -59,13 +66,24 @@ public class SubjectController {
 		System.out.println("queryByName success");
 		return "/admin/querySubject.jsp";
 	}
-
-	@RequestMapping("/queryById")
+	
+	@RequestMapping(value="/queryById")
 	public String queryById(Integer id,Model model) {
 		Subject subject = this.service.queryById(id);
 		model.addAttribute("subject", subject);
 		System.out.println("queryById success");
 		return "/query.jsp";
+	}
+	
+	@RequestMapping(value="/querySub",method=RequestMethod.POST,produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String querySub(HttpServletRequest request,HttpServletResponse response) {
+		
+		List<Subject> subjects = this.service.queryAll();
+		System.out.println("querySub success");
+		/*System.out.println(subjects);*/
+		String jsonString = JSONObject.toJSONString(subjects);
+		return jsonString;
 	}
 	
 }
