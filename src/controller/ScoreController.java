@@ -8,11 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import entity.Score;
+import entity.ScoreQueryDto;
+import entity.User;
+import entity.UserQueryDto;
 import service.ScoreService;
 
 @Controller
 @Scope
-@RequestMapping("/Score")
+@RequestMapping("/score")
 public class ScoreController{
 
 	@Autowired
@@ -20,7 +23,13 @@ public class ScoreController{
 	
 	
 	
-	
+	@RequestMapping("/query")
+	public String query(ScoreQueryDto sqd, Model model) {
+		List<ScoreQueryDto> scores = this.service.query(sqd);
+		System.out.println(scores);
+		model.addAttribute("scores", scores);
+		return "/admin/queryScore.jsp";
+	}
 	
 	
 

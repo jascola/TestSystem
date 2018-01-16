@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 
 import dao.ScoreDao;
 import entity.Score;
+import entity.ScoreQueryDto;
 
 
 @Service
@@ -19,6 +20,10 @@ public class ScoreService {
 	public List<Score> queryAll() {
 		System.out.println("size:"+this.dao.queryAll().size());
 		return this.dao.queryAll();
+	}
+	
+	public List<ScoreQueryDto> query(ScoreQueryDto sqd) {
+		return this.dao.query(sqd);
 	}
 	
 	public Score queryById(Integer id) {

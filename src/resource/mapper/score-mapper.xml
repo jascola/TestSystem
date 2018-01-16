@@ -17,6 +17,17 @@
 		values(#{userId},#{subjectId},#{score})
 	</insert>
 	
+	<select id="query" resultType="entity.ScoreQueryDto" parameterType="entity.ScoreQueryDto">
+		select * from score
+		<where>
+			<if test="userName!=null and userName!=''">
+				and userName like '%${userName}%'
+			</if>
+			<if test="subject.subjectId!=null">
+				and subjectId = #{subject.subjectId}
+			</if>
+		</where>
+	</select>
 	
 	<!-- 只能更新分数 -->
 	<update id="update" parameterType="entity.Score">

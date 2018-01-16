@@ -15,29 +15,30 @@
 </head>
 <body>
 	<form action="/TestSystem/score/query" method="get">
+
 		用户名：<input type="text" name="userName"><br> 
-		科目：<input
-			type="text" name="identity"> <input type="submit" value="查找">
+		科目：<select id="subjectId" name="subject.subjectId"></select><br>
+		 <input type="submit" value="查询分数">
 	</form>
 
 	<table border="1px">
 		<tr>
-			<td colspan="4">query List</td>
+			<td colspan="5">query List</td>
 		</tr>
 		<tr>
 			<th>用户ID</th>
 			<th>用户名</th>
-			<th>密码</th>
-			<th>身份</th>
+			<th>科目名称</th>
+			<th>成绩</th>
 			<th colspan="2">操作</th>
 		</tr>
 
-		<c:forEach items="${users1 }" var="p1">
+		<c:forEach items="${scores }" var="score">
 			<tr>
-				<td>${p1.userId}</td>
-				<td>${p1.userName }</td>
-				<td>${p1.password }</td>
-				<td>${p1.identity }</td>
+				<td>${score.userId}</td>
+				<td>${score.userName }</td>
+				<td>${score.subject.subjectId }</td>
+				<td>${score.score }</td>
 				<td><button data-toggle="modal" data-target="#${p1.userId}a"
 						value="alter">修改</button></td>
 				<td><button data-toggle="modal" data-target="#${p1.userId}d"
@@ -107,4 +108,28 @@
 		</c:forEach>
 	</table>
 </body>
+
+<script>
+
+        $(document).ready(function(){
+            $.ajax({
+                contentType : "application/json;charset=utf-8",
+                type : "POST",
+                url : "/TestSystem/subject/querySub",
+                dataType : "json",
+                success : function(data) {
+                    $.each(data, function(i, subject) {
+                        $('#subjectId').append(
+                                $('<option>').text(subject.subjectName).attr('value',
+                                        subject.subjectId));
+                       
+                    });
+                }
+            });
+        });
+
+    </script>
+
+
+
 </html>
