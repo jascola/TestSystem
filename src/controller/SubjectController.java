@@ -17,29 +17,28 @@ import service.SubjectService;
 public class SubjectController {
 
 	
-	
-	
 	@Autowired
 	private SubjectService service;
+	
 	@RequestMapping("/insert")
 	public String insert(Subject pro) {
 		this.service.insert(pro);
 		System.out.println("insert success");
-		return "redirect:/index.jsp";
+		return "redirect:/admin/querySubject.jsp";
 	}
 	
 	@RequestMapping("/delete")
 	public String delete(Integer id) {
 		this.service.delete(id);
 		System.out.println("delete success");
-		return "redirect:/index.jsp";
+		return "/admin/querySubject.jsp";
 	}
 	
 	@RequestMapping("/update")
 	public String update(Subject sub) {
 		this.service.update(sub);
 		System.out.println("update success");
-		return "redirect:/index.jsp";
+		return "/admin/querySubject.jsp";
 	}
 	
 	@RequestMapping("/queryAll")
@@ -48,6 +47,15 @@ public class SubjectController {
 		model.addAttribute("subjects", subjects);
 		System.out.println("queryAll success");
 		return "/query.jsp";
+	}
+	
+	@RequestMapping("/queryByName")
+	public String queryByName(String subjectName,Model model) {
+		System.out.println("ready to search..."+ " name:"+ subjectName);
+		List<Subject> subjects = this.service.queryByName(subjectName);
+		model.addAttribute("subjects", subjects);
+		System.out.println("queryByName success");
+		return "/admin/querySubject.jsp";
 	}
 
 	@RequestMapping("/queryById")

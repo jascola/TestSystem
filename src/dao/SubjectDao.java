@@ -14,6 +14,8 @@ public interface SubjectDao {
 	
 	Subject queryById(Integer id);//根据id查单个
 	
+	List<Subject> queryByName(String subjectName);
+	
 	int insert(Subject sub);//插入一个实体
 	
 	int delete(Integer id);

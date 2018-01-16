@@ -9,12 +9,18 @@ import org.springframework.ui.Model;
 
 import dao.UserDao;
 import entity.User;
+import entity.UserQueryDto;
 
 @Service
 public class UserService {
 
 	@Autowired
 	private UserDao dao;
+	
+	public List<User> query(UserQueryDto user){
+		return this.dao.query(user);
+	}
+	
 	public List<User> queryAll() {
 		System.out.println("size:"+this.dao.queryAll().size());
 		return this.dao.queryAll();
@@ -42,5 +48,6 @@ public class UserService {
 	public int delete(Integer id) {
 		return this.dao.delete(id);
 	}
+	
 	
 }

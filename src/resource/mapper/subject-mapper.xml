@@ -32,4 +32,17 @@
 		select * from subject where SubjectId=#{subjectId}
 	</select>
 
+	<!-- Mybatis默认采用ONGL解析参数，所以会自动采用对象树的形式取string.num值，引起报错。
+	无论参数名，都要改成"_parameter"。 -->
+	
+	<select id="queryByName" parameterType="java.lang.String"
+		resultType="entity.Subject">
+		select * from subject 
+		<where>
+			<if test="_parameter!=null and _parameter !=''">
+				and SubjectName like '%${_parameter}%'
+			</if>
+		</where>
+	</select>
+
 </mapper>

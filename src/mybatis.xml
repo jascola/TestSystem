@@ -7,5 +7,6 @@
 	<!-- mappers指要加载的映射文件 -->
 	<mappers>
 		<mapper resource="resource/mapper/user-mapper.xml" />
+		<mapper resource="resource/mapper/subject-mapper.xml" />
 	</mappers>
 </configuration>

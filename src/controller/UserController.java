@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import entity.User;
+import entity.UserQueryDto;
 import service.UserService;
 
 @Controller
@@ -43,17 +44,28 @@ public class UserController {
 	
 	@RequestMapping("/delete")
 	public String delete(Integer id) {
+		System.out.println(id);
+		System.out.println("--------------------------");
 		this.service.delete(id);
 		System.out.println("delete success");
-		return "redirect:/index.jsp";
+		return "redirect:/admin/queryUser.jsp";
 	}
 	
 	@RequestMapping("/update")
 	public String update(User user) {
 		this.service.update(user);
 		System.out.println("update success");
-		return "redirect:/index.jsp";
+		return "redirect:/admin/queryUser.jsp";
 	}
+	
+	@RequestMapping("/query")
+	public String query(UserQueryDto user, Model model) {
+		List<User> users = this.service.query(user);
+		System.out.println(users);
+		model.addAttribute("users1", users);
+		return "/admin/queryUser.jsp";
+	}
+	
 	
 	@RequestMapping("/queryAll")
 	public String queryAll(Model model) {

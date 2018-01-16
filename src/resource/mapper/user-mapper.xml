@@ -5,7 +5,18 @@
 <!-- namespcae原来指命名空间 -->
 <!-- 现在namespace指要映射给哪个接口 -->
 <mapper namespace="dao.UserDao">
-
+	
+	<select id="query" resultType="entity.User" parameterType="entity.UserQueryDto">
+		select * from user
+		<where>
+			<if test="userName!=null and userName !=''">
+				and UserName like '%${userName}%'
+			</if>
+			<if test="identity!=null">
+				and Identity = #{identity}
+			</if>
+		</where>
+	</select>
 
 	<select id="queryAll" resultType="entity.User">
 		select * from user 

@@ -24,10 +24,15 @@ public class SubjectService {
 	public Subject queryById(Integer id) {
 		return this.dao.queryById(id);
 	}
+	
+	public List<Subject> queryByName(String subjectName) {
+		System.out.println("queryByName service working..."+ " name:"+ subjectName);
+		return this.dao.queryByName(subjectName);
+	}
 
 	@Transactional
 	public int insert(Subject sub) {
-		System.out.println("service zhixing");
+		System.out.println("insert service working...");
 		return this.dao.insert(sub);
 	}
 

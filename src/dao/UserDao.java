@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 
 import entity.User;
+import entity.UserQueryDto;
 
 @Repository
 public interface UserDao {
@@ -21,5 +22,7 @@ public interface UserDao {
 	int update(User user);
 	
 	User queryByName(String str);
+	
+	List<User> query(UserQueryDto user);
 	
 }
