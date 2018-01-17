@@ -29,9 +29,6 @@ public class OptionzController{
 			@RequestParam(value = "questions[]") String[] questions,
 			@RequestParam(value = "isRight[]") String[] isRight) {
 		
-		
-		
-		
 		for(int i=0;i<questions.length;i++)
 		{
 			Optionz op =new Optionz();

@@ -157,7 +157,7 @@ for(var i=0;i<multiIds.length;i++){
 		
 		/* singleanswers.push(s);	 */
 		
-		var s={"multiIds":str[0],"optionzIds":optionzs}; 
+		var s={"multiId":str[0],"optionzIds":optionzs}; 
 		multianswers.push(s); 
 	} 
 	console.log(multianswers);
@@ -168,7 +168,7 @@ for(var i=0;i<multiIds.length;i++){
 		
 		var a = $("input[name='"+singleIds[i].value+"']:checked").val();
 		/* console.log(a); */
-		var s={"singleIds":singleIds[i].value,"optionzId":a};
+		var s={"singleId":singleIds[i].value,"optionzId":a};
 		singleanswers.push(s);	
 	} 
 	
@@ -202,12 +202,46 @@ for(var i=0;i<multiIds.length;i++){
 	/* json转成json字符串 */
 	console.log(JSON.stringify(reanswers));
 	
+	
+	var data={
+			multianswers:multianswers,
+			singleanswers:singleanswers,
+			coanswers :coanswers,
+			reanswers :reanswers
+	};
+	
 	$.ajax({
-		url:"/J2EE/login",
-		data:{"userID":1,"userName":"asdf","userPwd":"qwer"},
+		url:"/TestSystem/score/createscore",
+		type:"post",
+		dataType:"json",
+		data:JSON.stringify(data)
+			,
+		contentType:"application/json",
 		success:function(result){
-			console.log(result);
+			
 		}
 	});
 	
+	
+	
+	
+	/*$.ajax({
+	
+		url:"/TestSystem/score/creates",
+		type:"post",
+		dataType : "json",
+		data:JSON.stringify(date),
+		contentType:"application/json",
+		success:function(result){
+			console.log(result);
+		}
+	});*/
+	
+	
+	/*{
+		'multianswers':multianswers,
+		'singleanswers':singleanswers,
+		'coanswers':coanswers,
+		'reanswers':reanswers
+			}*/
 }
