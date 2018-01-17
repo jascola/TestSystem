@@ -22,7 +22,7 @@ public class ScoreService {
 		return this.dao.queryAll();
 	}
 	
-	public List<ScoreQueryDto> query(ScoreQueryDto sqd) {
+	public List<Score> query(ScoreQueryDto sqd) {
 		return this.dao.query(sqd);
 	}
 	

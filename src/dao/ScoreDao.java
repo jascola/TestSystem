@@ -14,7 +14,7 @@ public interface ScoreDao {
 	
 	Score queryById(Integer id);//根据id查单个
 	
-	List<ScoreQueryDto> query(ScoreQueryDto sqd);
+	List<Score> query(ScoreQueryDto sqd);
 	
 	int insert(Score sco);//插入一个实体
 	

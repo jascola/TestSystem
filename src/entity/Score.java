@@ -4,36 +4,26 @@ package entity;
 public class Score {
 
 	private Integer scoreId;
-	private Integer userId;
-	private Integer subjectId;
+	private User user;
+	private Subject subject;
 	private Double score;
-	public Score(Integer scoreId, Integer userId, Integer subjectId, Double score) {
-		super();
-		this.scoreId = scoreId;
-		this.userId = userId;
-		this.subjectId = subjectId;
-		this.score = score;
-	}
-	public Score() {
-		
-	}
 	public Integer getScoreId() {
 		return scoreId;
 	}
 	public void setScoreId(Integer scoreId) {
 		this.scoreId = scoreId;
 	}
-	public Integer getUserId() {
-		return userId;
+	public User getUser() {
+		return user;
 	}
-	public void setUserId(Integer userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
-	public Integer getSubjectId() {
-		return subjectId;
+	public Subject getSubject() {
+		return subject;
 	}
-	public void setSubjectId(Integer subjectId) {
-		this.subjectId = subjectId;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
 	public Double getScore() {
 		return score;
@@ -41,51 +31,21 @@ public class Score {
 	public void setScore(Double score) {
 		this.score = score;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((score == null) ? 0 : score.hashCode());
-		result = prime * result + ((scoreId == null) ? 0 : scoreId.hashCode());
-		result = prime * result + ((subjectId == null) ? 0 : subjectId.hashCode());
-		result = prime * result + ((userId == null) ? 0 : userId.hashCode());
-		return result;
+	public Score(Integer scoreId, User user, Subject subject, Double score) {
+		super();
+		this.scoreId = scoreId;
+		this.user = user;
+		this.subject = subject;
+		this.score = score;
 	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Score other = (Score) obj;
-		if (score == null) {
-			if (other.score != null)
-				return false;
-		} else if (!score.equals(other.score))
-			return false;
-		if (scoreId == null) {
-			if (other.scoreId != null)
-				return false;
-		} else if (!scoreId.equals(other.scoreId))
-			return false;
-		if (subjectId == null) {
-			if (other.subjectId != null)
-				return false;
-		} else if (!subjectId.equals(other.subjectId))
-			return false;
-		if (userId == null) {
-			if (other.userId != null)
-				return false;
-		} else if (!userId.equals(other.userId))
-			return false;
-		return true;
+	public Score() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	@Override
 	public String toString() {
-		return "Score [scoreId=" + scoreId + ", userId=" + userId + ", subjectId=" + subjectId + ", score=" + score
-				+ "]";
+		return "Score [scoreId=" + scoreId + ", user=" + user + ", subject=" + subject + ", score=" + score + "]";
 	}
+	
 	
 }

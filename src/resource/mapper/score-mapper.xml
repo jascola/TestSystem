@@ -17,17 +17,38 @@
 		values(#{userId},#{subjectId},#{score})
 	</insert>
 	
-	<select id="query" resultType="entity.ScoreQueryDto" parameterType="entity.ScoreQueryDto">
-		select * from score
+
+	<resultMap type="entity.Score" id="scores1">
+		<id property="scoreId" column="ScoreID" />
+		<result property="score" column="Score" />
+		<association property="user" javaType="entity.User">
+			<id property="userId" column="UserID" />
+			<result property="userName" column="UserName" />
+		</association>
+		<association property="subject" javaType="entity.Subject">
+			<id property="subjectId" column="SubjectId"/>
+			<result property="subjectName" column="SubjectName"/>
+		</association>
+	</resultMap>
+	
+	<select id="query" resultMap="scores1" parameterType="entity.ScoreQueryDto">
+		SELECT *
+		FROM score a,user b,subject c 
 		<where>
+			<if test="1==1">
+				and a.UserId=b.UserId and a.SubjectId=c.SubjectId
+			</if>
 			<if test="userName!=null and userName!=''">
-				and userName like '%${userName}%'
+				and b.userName like '%${userName}%'
 			</if>
-			<if test="subject.subjectId!=null">
-				and subjectId = #{subject.subjectId}
+			<if test="subject.subjectId!=null and subject.subjectId!=0">
+				and c.subjectId = #{subject.subjectId}
 			</if>
+			
 		</where>
+	
 	</select>
+	
 	
 	<!-- 只能更新分数 -->
 	<update id="update" parameterType="entity.Score">

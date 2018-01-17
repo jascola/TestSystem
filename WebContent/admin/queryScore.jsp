@@ -14,10 +14,14 @@
 <title>queryScore</title>
 </head>
 <body>
+
+
 	<form action="/TestSystem/score/query" method="get">
 
 		用户名：<input type="text" name="userName"><br> 
-		科目：<select id="subjectId" name="subject.subjectId"></select><br>
+		科目：<select id="subjectId" name="subject.subjectId">
+			<option value="0">全部科目</option>
+		</select><br>
 		 <input type="submit" value="查询分数">
 	</form>
 
@@ -30,23 +34,22 @@
 			<th>用户名</th>
 			<th>科目名称</th>
 			<th>成绩</th>
-			<th colspan="2">操作</th>
+			<th colspan="1">操作</th>
 		</tr>
 
 		<c:forEach items="${scores }" var="score">
 			<tr>
-				<td>${score.userId}</td>
-				<td>${score.userName }</td>
-				<td>${score.subject.subjectId }</td>
+				<td>${score.user.userId}</td>
+				<td>${score.user.userName }</td>
+				<td>${score.subject.subjectName }</td>
 				<td>${score.score }</td>
-				<td><button data-toggle="modal" data-target="#${p1.userId}a"
+				<td><button data-toggle="modal" data-target="#${score.scoreId}a"
 						value="alter">修改</button></td>
-				<td><button data-toggle="modal" data-target="#${p1.userId}d"
-						value="delete">删除</button></td>
+			
 			</tr>
 
 			<!-- 	update的调用模态框 -->
-			<div class="modal fade" id="${p1.userId}a" tabindex="-1"
+			<div class="modal fade" id="${score.scoreId}a" tabindex="-1"
 				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -56,17 +59,18 @@
 							<h4 class="modal-title" id="myModalLabel">修改信息</h4>
 						</div>
 						<div class="modal-body">
-							<form role="form" action="/TestSystem/user/update" method="get">
+							<form role="form" action="/TestSystem/score/update" method="get">
 								<div class="form-group">
+								<input type="hidden" name="scoreId" value="${score.scoreId}"/>
 									<label for="id">用户id</label> <input type="text"
-										class="form-control" name="userId" value="${p1.userId}"
+										class="form-control" name="user.userId" value="${score.user.userId}"
 										readonly> <label for="name">用户名</label> <input
-										type="text" class="form-control" name="userName"
-										value="${p1.userName}"> <label for="password">密码</label>
-									<input type="text" class="form-control" name="password"
-										value="${p1.password}"> <label for="identity">权限</label>
-									<input type="text" class="form-control" name="identity"
-										value="${p1.identity}">
+										type="text" class="form-control" name="user.userName"
+										value="${score.user.userName}" readonly> <label for="subjectName">科目名称</label>
+									<input type="text" class="form-control" name="subject.subjectName"
+										value="${score.subject.subjectName }" readonly> <label for="score">成绩</label>
+									<input type="text" class="form-control" name="score"
+										value="${score.score}" >
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default"
@@ -79,32 +83,7 @@
 				</div>
 			</div>
 
-			<!--       delete的调用模态框   -->
-			<div class="modal fade" id="${p1.userId}d" tabindex="-1"
-				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">&times;</button>
-							<h4 class="modal-title" id="myModalLabel">确认删除</h4>
-						</div>
-						<div class="modal-body">
-							<form role="form" action="/TestSystem/user/delete" method="get">
-								<div class="form-group">
-									<input type="hidden" class="form-control" name="id"
-										value="${p1.userId}"> <label>确定要删除此条记录吗？</label>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">关闭</button>
-									<button type="submit" class="btn btn-danger">确定删除</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
+			
 		</c:forEach>
 	</table>
 </body>

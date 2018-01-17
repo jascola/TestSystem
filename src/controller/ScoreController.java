@@ -25,7 +25,7 @@ public class ScoreController{
 	
 	@RequestMapping("/query")
 	public String query(ScoreQueryDto sqd, Model model) {
-		List<ScoreQueryDto> scores = this.service.query(sqd);
+		List<Score> scores = this.service.query(sqd);
 		System.out.println(scores);
 		model.addAttribute("scores", scores);
 		return "/admin/queryScore.jsp";
@@ -48,10 +48,11 @@ public class ScoreController{
 	}
 	
 	@RequestMapping("/update")
-	public String update(Score Score) {
-		this.service.update(Score);
+	public String update(Score score) {
+		System.out.println(score);
+		this.service.update(score);
 		System.out.println("update success");
-		return "redirect:/index.jsp";
+		return "/admin/queryScore.jsp";
 	}
 	
 	@RequestMapping("/queryAll")

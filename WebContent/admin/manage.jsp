@@ -39,7 +39,7 @@
 	</li>
 	<li>成绩查询
 		<ul>
-			<li><a href="">学生成绩查询</a></li>
+			<li><a href="queryScore.jsp">学生成绩查询</a></li>
 		</ul>
 	</li>
 </ul>
