@@ -10,6 +10,8 @@ public interface RecognizDao {
 	
 	List<Recogniz> queryAll();//查全部
 	
+	List<Recogniz> query(Recogniz rec);//查全部
+	
 	Recogniz queryById(Integer id);//根据id查单个
 	
 	int insert(Recogniz rec);//插入一个实体

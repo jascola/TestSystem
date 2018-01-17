@@ -32,14 +32,16 @@
 	<li>题库管理
 		<ul>
 			<li><a href="addChoice.jsp">添加选择题</a></li>
-			<li><a href="">添加填空题</a></li>
-			<li><a href="">添加判断题</a></li>
-			<li><a href="">题目查询与修改</a></li>
+			<li><a href="addCompletion.jsp">添加填空题</a></li>
+			<li><a href="addRecogniz.jsp">添加判断题</a></li>
+			<li><a href="queryChoice.jsp">选择题查询与修改</a></li>
+			<li><a href="queryCompletion.jsp">填空题查询与修改</a></li>
+			<li><a href="queryRecogniz.jsp">判断题查询与修改</a></li>
 		</ul>
 	</li>
 	<li>成绩查询
 		<ul>
-			<li><a href="queryScore.jsp">学生成绩查询</a></li>
+			<li><a href="queryScore.jsp">学生成绩查询与修改</a></li>
 		</ul>
 	</li>
 </ul>

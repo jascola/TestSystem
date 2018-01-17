@@ -18,6 +18,10 @@ public class CompletionService {
 		return this.dao.queryAll();
 	}
 	
+	public List<Completion> query(Completion com) {
+		return this.dao.query(com);
+	}
+	
 	public Completion queryById(Integer id) {
 		return this.dao.queryById(id);
 	}

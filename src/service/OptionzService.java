@@ -20,6 +20,8 @@ public class OptionzService {
 	public Optionz queryById(Integer id) {
 		return this.dao.queryById(id);
 	}
+	
+	
 	public List<Optionz> queryByChoiceId(Integer id) {
 		return this.dao.queryByChoiceId(id);
 	}

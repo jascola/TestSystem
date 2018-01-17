@@ -21,6 +21,11 @@ public class RecognizService {
 		return this.dao.queryAll();
 	}
 	
+	public List<Recogniz> query(Recogniz rec) {
+		/*System.out.println("size:"+this.dao.queryAll().size());*/
+		return this.dao.query(rec);
+	}
+	
 	public Recogniz queryById(Integer id) {
 		return this.dao.queryById(id);
 	}

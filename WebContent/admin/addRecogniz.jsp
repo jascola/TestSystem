@@ -4,15 +4,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>addChoice</title>
+<title>addRecogniz</title>
 </head>
 <body>
-	<form action="/TestSystem/choice/insert" method="get">
+	<form action="/TestSystem/recogniz/insert" method="get">
 		科目名称：<select id="subjectId" name="subject.subjectId"></select><br>
-		题目描述：<input type="text" name="content"><br>
-		单选/多选：<select name="isMulti">
-						<option value="0">单选</option>
-						<option value="1">多选</option>
+		判断题描述：<input type="text" name="content"><br>
+		正确性：<select name="answer">
+						<option value="0">错误</option>
+						<option value="1">正确</option>
 					</select>
 		<input type="submit" value="添加">
 	</form>

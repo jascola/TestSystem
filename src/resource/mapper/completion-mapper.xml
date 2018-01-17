@@ -5,7 +5,32 @@
 <!-- namespcae原来指命名空间 -->
 <!-- 现在namespace指要映射给哪个接口 -->
 <mapper namespace="dao.CompletionDao">
-
+	
+	
+	<resultMap type="entity.Completion" id="completion1">
+	<id property="completionId" column="CompletionId"/>
+	<result property="content" column="Content"/>
+	<result property="answer" column="Answer"/>
+	<association property="subject" javaType="entity.Subject">
+		<id property="subjectId" column="SubjectId"/>
+		<result property="subjectName" column="SubjectName"/>
+	</association>
+	</resultMap>
+	
+	<select id="query" resultMap="completion1" parameterType="entity.Completion">
+		select * from completion a, subject b
+		<where>
+			<if test="1==1">
+				and a.SubjectId=b.SubjectId
+			</if>
+			<if test="content!=null and content!=''">
+				and a.content like '%${content}%'
+			</if>
+			<if test="subject.subjectId!=0 and subject.subjectId!=null">
+				and b.subjectId = #{subject.subjectId}
+			</if>
+		</where>
+	</select>
 
 	<select id="queryAll" resultType="entity.Completion">
 		select * from completion 
@@ -14,12 +39,12 @@
 	<insert id="insert" parameterType="entity.Completion">
 		insert into
 		completion(SubjectId,Content,Answer)
-		values(#{subjectId},#{content},#{answer})
+		values(#{subject.subjectId},#{content},#{answer})
 	</insert>
 
 	<update id="update" parameterType="entity.Completion">
-		update Completion set
-		SubjectId=#{subjectId},Content=#{content},Answer=#{answer}
+		update completion set
+		Content=#{content},Answer=#{answer}
 		where CompletionId=#{completionId}
 	</update>
 

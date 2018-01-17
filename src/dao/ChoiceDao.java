@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 import entity.Choice;
+import entity.ChoiceQueryDto;
 
 
 @Repository
@@ -18,5 +19,7 @@ public interface ChoiceDao {
 	
 	int delete(Integer id);
 	
-	int update(Choice cho);
+	int update(ChoiceQueryDto cqd);
+	
+	List<Choice> query(ChoiceQueryDto cqd);
 }

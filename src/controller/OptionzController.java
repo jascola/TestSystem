@@ -6,8 +6,11 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.alibaba.fastjson.JSONObject;
 
 import entity.Choice;
 import entity.Optionz;
@@ -30,8 +33,7 @@ public class OptionzController{
 			@RequestParam(value = "isRight[]") String[] isRight) {
 		
 		
-		
-		
+		System.out.println(questions.length);
 		for(int i=0;i<questions.length;i++)
 		{
 			Optionz op =new Optionz();
@@ -42,8 +44,8 @@ public class OptionzController{
 			op.setIsRight(Integer.valueOf(isRight[i]));
 			this.service.insert(op);
 		}
-		
-		return "/query.jsp";
+		System.out.println("===================================");
+		return "/admin/addChoice.jsp";
 	}
 	
 	@RequestMapping("/insert")
@@ -82,6 +84,17 @@ public class OptionzController{
 		model.addAttribute("Optionz", Optionz);
 		System.out.println("queryById success");
 		return "/query.jsp";
+	}
+	
+	@RequestMapping(value="/queryByChoiceId",method=RequestMethod.GET,produces = "application/json;charset=utf-8")
+	@ResponseBody
+	public String queryByChoiceId(Integer id) {
+		List<Optionz> optionz = this.service.queryByChoiceId(id);
+		System.out.println(optionz);
+		String jsonString = JSONObject.toJSONString(optionz);
+		return jsonString;
+		/*System.out.println("queryById success");
+		return "/query.jsp";*/
 	}
 	
 	

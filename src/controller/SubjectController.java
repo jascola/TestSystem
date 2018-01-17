@@ -80,7 +80,7 @@ public class SubjectController {
 	public String querySub(HttpServletRequest request,HttpServletResponse response) {
 		
 		List<Subject> subjects = this.service.queryAll();
-		System.out.println("querySub success");
+		/*System.out.println("querySub success");*/
 		/*System.out.println(subjects);*/
 		String jsonString = JSONObject.toJSONString(subjects);
 		return jsonString;
