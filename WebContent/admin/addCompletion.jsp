@@ -4,11 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>addChoice</title>
+<title>addCompletion</title>
 </head>
 <body>
 	<form action="/TestSystem/completion/insert" method="get">
-		科目名称：<select id="subjectId" name="subjectId"></select><br>
+		科目名称：<select id="subjectId" name="subject.subjectId"></select><br>
 		填空题描述：<input type="text" name="content"><br>
 		标准答案：<input type="text" name="answer">
 		<input type="submit" value="添加">

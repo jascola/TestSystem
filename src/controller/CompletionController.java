@@ -25,21 +25,22 @@ public class CompletionController{
 	public String insert(Completion completion) {
 		this.service.insert(completion);
 		System.out.println("insert success");
-		return "redirect:/index.jsp";
+		return "/admin/addCompletion.jsp";
 	}
 	
 	@RequestMapping("/delete")
 	public String delete(Integer id) {
 		this.service.delete(id);
 		System.out.println("delete success");
-		return "redirect:/index.jsp";
+		return "/admin/queryCompletion.jsp";
 	}
 	
 	@RequestMapping("/update")
 	public String update(Completion completion) {
+		System.out.println(completion);
 		this.service.update(completion);
 		System.out.println("update success");
-		return "redirect:/index.jsp";
+		return "/admin/queryCompletion.jsp";
 	}
 	
 	@RequestMapping("/queryAll")
@@ -56,6 +57,14 @@ public class CompletionController{
 		model.addAttribute("completion", completion);
 		System.out.println("queryById success");
 		return "/query.jsp";
+	}
+	
+	@RequestMapping("/query")
+	public String query(Completion com,Model model) {
+		List<Completion> completions = this.service.query(com);
+		model.addAttribute("completions", completions);
+		System.out.println("queryAll success");
+		return "/admin/queryCompletion.jsp";
 	}
 	
 	

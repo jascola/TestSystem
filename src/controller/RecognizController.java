@@ -25,21 +25,21 @@ public class RecognizController{
 	public String insert(Recogniz recogniz) {
 		this.service.insert(recogniz);
 		System.out.println("insert success");
-		return "redirect:/index.jsp";
+		return "/admin/addRecogniz.jsp";
 	}
 	
 	@RequestMapping("/delete")
 	public String delete(Integer id) {
 		this.service.delete(id);
 		System.out.println("delete success");
-		return "redirect:/index.jsp";
+		return "/admin/queryRecogniz.jsp";
 	}
 	
 	@RequestMapping("/update")
 	public String update(Recogniz recogniz) {
 		this.service.update(recogniz);
 		System.out.println("update success");
-		return "redirect:/index.jsp";
+		return "/admin/queryRecogniz.jsp";
 	}
 	
 	@RequestMapping("/queryAll")
@@ -56,6 +56,14 @@ public class RecognizController{
 		model.addAttribute("recogniz", recogniz);
 		System.out.println("queryById success");
 		return "/query.jsp";
+	}
+	
+	@RequestMapping("/query")
+	public String query(Recogniz rec,Model model) {
+		List<Recogniz> recognizs = this.service.query(rec);
+		model.addAttribute("recognizs", recognizs);
+		System.out.println("queryAll success");
+		return "/admin/queryRecogniz.jsp";
 	}
 	
 	

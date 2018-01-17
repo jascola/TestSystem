@@ -4,7 +4,7 @@ package entity;
 public class Choice {
 	
 	private Integer choiceId;
-	private Integer subjectId;
+	private Subject subject;
 	private String content;
 	private Integer isMulti;
 	public Integer getChoiceId() {
@@ -13,11 +13,11 @@ public class Choice {
 	public void setChoiceId(Integer choiceId) {
 		this.choiceId = choiceId;
 	}
-	public Integer getSubjectId() {
-		return subjectId;
+	public Subject getSubject() {
+		return subject;
 	}
-	public void setSubjectId(Integer subjectId) {
-		this.subjectId = subjectId;
+	public void setSubject(Subject subject) {
+		this.subject = subject;
 	}
 	public String getContent() {
 		return content;
@@ -31,61 +31,22 @@ public class Choice {
 	public void setIsMulti(Integer isMulti) {
 		this.isMulti = isMulti;
 	}
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((choiceId == null) ? 0 : choiceId.hashCode());
-		result = prime * result + ((content == null) ? 0 : content.hashCode());
-		result = prime * result + ((isMulti == null) ? 0 : isMulti.hashCode());
-		result = prime * result + ((subjectId == null) ? 0 : subjectId.hashCode());
-		return result;
-	}
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Choice other = (Choice) obj;
-		if (choiceId == null) {
-			if (other.choiceId != null)
-				return false;
-		} else if (!choiceId.equals(other.choiceId))
-			return false;
-		if (content == null) {
-			if (other.content != null)
-				return false;
-		} else if (!content.equals(other.content))
-			return false;
-		if (isMulti == null) {
-			if (other.isMulti != null)
-				return false;
-		} else if (!isMulti.equals(other.isMulti))
-			return false;
-		if (subjectId == null) {
-			if (other.subjectId != null)
-				return false;
-		} else if (!subjectId.equals(other.subjectId))
-			return false;
-		return true;
-	}
-	@Override
-	public String toString() {
-		return "Subject [choiceId=" + choiceId + ", subjectId=" + subjectId + ", content=" + content + ", isMulti="
-				+ isMulti + "]";
-	}
-	public Choice(Integer choiceId, Integer subjectId, String content, Integer isMulti) {
+	public Choice(Integer choiceId, Subject subject, String content, Integer isMulti) {
 		super();
 		this.choiceId = choiceId;
-		this.subjectId = subjectId;
+		this.subject = subject;
 		this.content = content;
 		this.isMulti = isMulti;
 	}
 	public Choice() {
-		
+		super();
+		// TODO Auto-generated constructor stub
 	}
+	@Override
+	public String toString() {
+		return "Choice [choiceId=" + choiceId + ", subject=" + subject + ", content=" + content + ", isMulti=" + isMulti
+				+ "]";
+	}
+	
 	
 }

@@ -41,7 +41,7 @@ public class UserController {
 	public String insert(User pro) {
 		this.service.insert(pro);
 		System.out.println("insert success");
-		return "redirect:/index.jsp";
+		return "redirect:/admin/manage.jsp";
 	}
 	
 	@RequestMapping("/delete")

@@ -17,7 +17,7 @@ public class SubjectService {
 	@Autowired
 	private SubjectDao dao;
 	public List<Subject> queryAll() {
-		System.out.println("size:"+this.dao.queryAll().size());
+		/*System.out.println("size:"+this.dao.queryAll().size());*/
 		return this.dao.queryAll();
 	}
 	

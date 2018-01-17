@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import entity.Choice;
+import entity.ChoiceQueryDto;
 import service.ChoiceService;
 
 @Controller
@@ -34,10 +35,10 @@ public class ChoiceController{
 	}
 	
 	@RequestMapping("/update")
-	public String update(Choice choice) {
-		this.service.update(choice);
+	public String update(ChoiceQueryDto cqd) {
+		this.service.update(cqd);
 		System.out.println("update success");
-		return "redirect:/index.jsp";
+		return "/admin/queryChoice.jsp";
 	}
 	
 	@RequestMapping("/queryAll")
@@ -54,6 +55,14 @@ public class ChoiceController{
 		model.addAttribute("choice", choice);
 		System.out.println("queryById success");
 		return "/query.jsp";
+	}
+	
+	@RequestMapping("/query")
+	public String query(ChoiceQueryDto cqd,Model model) {
+		List<Choice> choices = this.service.query(cqd);
+		model.addAttribute("choices", choices);
+		System.out.println("query success");
+		return "/admin/queryChoice.jsp";
 	}
 	
 	

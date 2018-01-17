@@ -13,6 +13,8 @@ public interface CompletionDao {
 	
 	List<Completion> queryAll();//查全部
 	
+	List<Completion> query(Completion com);
+	
 	Completion queryById(Integer id);//根据id查单个
 	
 	int insert(Completion com);//插入一个实体
