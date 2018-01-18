@@ -1,5 +1,5 @@
 $.ajax({
-		url:"/TestSystem/papercreate/create",
+		url:"/TestSystem/papercreate/create?subjectId=1",
 		success:function(result){
 			console.log(result);
 			var count=1;var mu =6;var sing=1;
