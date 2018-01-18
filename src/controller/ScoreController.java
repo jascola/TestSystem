@@ -51,8 +51,8 @@ public class ScoreController{
 	@Autowired
 	ScoreService sc;
 	@RequestMapping(value="/createscore",produces="application/json",consumes = "application/json")
-	@ResponseBody
 	/*传递字符串数组需要用@RequestParam声明类型，ajax指明类型为json*/
+	@ResponseBody
 	public String createscore(
 		@RequestBody FinallyAnswer fi	)
 	{
@@ -66,8 +66,8 @@ public class ScoreController{
 			if(re.getReanswer()!=null) {
 			Recogniz reco = new Recogniz();
 			reco=this.recogniz.queryById(Integer.valueOf(re.getRecogniz()));
-		
-			if(reco.getAnswer().equals( re.getReanswer())) {
+			System.out.println("reanswer:"+reco.getAnswer());
+			if(!reco.getAnswer().equals(re.getReanswer())) {
 				score+=5;
 			}
 			}
@@ -124,22 +124,24 @@ public class ScoreController{
 			Optionz op = new Optionz();
 			
 			op=this.optionz.queryById(Integer.valueOf(si.getOptionzId()));
-			if(op==null) {continue;}
+			/*if(op==null) {continue;}*/
 			if(op.getIsRight()==1 ) {
 				score+=5;
 				
 			}
 			}
 		}
+		System.out.println("user+"+user);
 		if(user!=null) {
 	Double ff = Double.valueOf(score);
 	Score scoref = new Score();
 	scoref.setScore(ff);
 	scoref.setSubject(fi.getSubject());
+	System.out.println("score:"+score);
 	scoref.setUser(user);
 	this.sc.insert(scoref);
 		}
-		return "ss";
+		return "";
 	}
 
 	@RequestMapping("/query")

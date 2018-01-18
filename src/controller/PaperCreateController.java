@@ -6,6 +6,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -44,8 +46,9 @@ public class PaperCreateController {
 	@Autowired
 	private SubjectService su;
 	@RequestMapping("/requestpaper")
-	public String requestpaper(Integer subjectId,Model model) {
-		model.addAttribute("subject",subjectId);
+	public String requestpaper(Integer subjectId,HttpSession session) {
+		/*model.addAttribute("subject",subjectId);*/
+		session.setAttribute("testsub", subjectId);
 		System.out.println(subjectId);
 		return "/query.jsp";
 	}
@@ -53,6 +56,7 @@ public class PaperCreateController {
 	@RequestMapping(value="/create",produces = "application/json;charset=utf-8")
 	 @ResponseBody
 	public String create(Integer subjectId) {
+		System.out.println("subID:"+subjectId);
 		Subject subject = this.su.queryById(subjectId);
 		
 		
@@ -69,6 +73,7 @@ public class PaperCreateController {
 	int ss=0;
 	while(i<=9) {
 		 int max=choices.size();
+		 System.out.println("max:"+max);
 	     Random random = new Random();
 	     int s = random.nextInt(max);
 	     /*System.out.println(s);*/
@@ -76,8 +81,10 @@ public class PaperCreateController {
 	    	 continue;
 	     }
 	    if( choiceset.add(choices.get(s))) {
+	    	System.out.println("填空题题号："+i);
 	    	i++;
 	    	if(choices.get(s).getIsMulti()==1) {
+	    		
 	    		ss++;
 	    	}
 	    }
@@ -88,6 +95,7 @@ public class PaperCreateController {
 	     int s = random.nextInt(max);	     
 	    /* System.out.println(s);*/
 	    if( completionset.add(completions.get(s))) {
+	    	System.out.println("填空题题号："+j);
 	    	j++;
 	    }
 	}
@@ -97,6 +105,7 @@ public class PaperCreateController {
 	     int s = random.nextInt(max);
 	    /* System.out.println(s);*/
 	    if( recognizset.add(recognizs.get(s))) {
+	    	System.out.println("填空题题号："+k);
 	    	k++;
 	    }
 	}
