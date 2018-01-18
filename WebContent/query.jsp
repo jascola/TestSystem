@@ -21,7 +21,7 @@
 </style>
 
 <body>欢迎来到本次考试，请勿作弊！！
-
+<h1 id="tit" ></h1>
 <!-- 动态创建div去显示题目选项 -->
 
 <div id="contener">

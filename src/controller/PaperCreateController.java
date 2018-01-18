@@ -21,10 +21,12 @@ import entity.Completion;
 import entity.Optionz;
 import entity.Paper;
 import entity.Recogniz;
+import entity.Subject;
 import service.ChoiceService;
 import service.CompletionService;
 import service.OptionzService;
 import service.RecognizService;
+import service.SubjectService;
 
 @Controller
 @Scope
@@ -39,9 +41,21 @@ public class PaperCreateController {
 	private RecognizService recogniz;
 	@Autowired
 	private OptionzService optionz;
+	@Autowired
+	private SubjectService su;
+	@RequestMapping("/requestpaper")
+	public String requestpaper() {
+		return "/query.jsp";
+	}
+	
+	
+	
 	@RequestMapping(value="/create",produces = "application/json;charset=utf-8")
 	 @ResponseBody
 	public String create(Integer subjectId) {
+		Subject subject = this.su.queryById(subjectId);
+		
+		
 	List<Choice> choices =this.choice.queryBySubjectId(subjectId);
 	List<Completion> completions =this.completion.queryAll();	
 	List<Recogniz> recognizs =this.recogniz.queryAll();	
@@ -100,6 +114,7 @@ public class PaperCreateController {
 	paper.setCompletionset(completionset);
 	paper.setChoicepaperlist(choicePapers);
 	paper.setRecognizset(recognizset);
+	paper.setSubject(subject);
 	String jsonString = JSONObject.toJSONString(paper);
 	return jsonString;
 	/*return "/query.jsp";*/

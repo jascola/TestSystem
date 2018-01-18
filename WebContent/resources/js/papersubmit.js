@@ -1,7 +1,12 @@
+var su = new Object();
+
 $.ajax({
 		url:"/TestSystem/papercreate/create?subjectId=1",
+		
 		success:function(result){
 			console.log(result);
+			$("#tit").html(result.subject.subjectName);
+			su = result.subject;
 			var count=1;var mu =6;var sing=1;
 			/* 生成单选与多选题 */
 			for(var j=0;j<result.choicepaperlist.length;j++){
@@ -220,7 +225,8 @@ for(var i=0;i<multiIds.length;i++){
 			multianswers:multianswers,
 			singleanswers:singleanswers,
 			coanswers :coanswers,
-			reanswers :reanswers
+			reanswers :reanswers,
+			subject:su
 	};
 	
 	$.ajax({

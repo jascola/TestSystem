@@ -31,11 +31,19 @@ public class UserController {
 			return "student";
 		}
 		else if(user.getPassword().equals(password)&&identity==0) {
+			httpSession.setAttribute("user", user);
 			return "admin";
 		}
 		return "";
 	}
 	
+	@RequestMapping(value="/logout")  
+    public String logout(HttpSession session) throws Exception{  
+        //Çå³ýSession  
+        session.invalidate();  
+          
+        return "";  
+    }  
 
 	@RequestMapping("/insert")
 	public String insert(User pro) {

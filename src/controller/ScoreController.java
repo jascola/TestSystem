@@ -48,6 +48,8 @@ public class ScoreController{
 	ChoiceService choice;
 	@Autowired
 	OptionzService optionz;
+	@Autowired
+	ScoreService sc;
 	@RequestMapping(value="/createscore",produces="application/json",consumes = "application/json")
 	@ResponseBody
 	/*传递字符串数组需要用@RequestParam声明类型，ajax指明类型为json*/
@@ -129,29 +131,17 @@ public class ScoreController{
 			}
 			}
 		}
+		if(user!=null) {
+	Double ff = Double.valueOf(score);
+	Score scoref = new Score();
+	scoref.setScore(ff);
+	scoref.setSubject(fi.getSubject());
+	scoref.setUser(user);
+	this.sc.insert(scoref);
+		}
 		return "ss";
 	}
-	/*@RequestMapping(value="/creates",produces="application/json",consumes = "application/json")
-	
-	传递字符串数组需要用@RequestParam声明类型，ajax指明类型为json
-	public String createscore(
-			@RequestBody MultiAnswer []multianswers
-			)
-	{
-		for(MultiAnswer s:multianswers)
-		System.out.println(s);
 
-		return " ss";
-	}*/
-	/*@RequestBody MultiAnswer[] multianswers,
-	@RequestBody SingleAnswer[] singleanswers,
-	@RequestBody CoAnswers[] coanswers,
-	@RequestBody ReAnswer[] reanswers*/
-	
-	
-	
-	
-	
 	@RequestMapping("/query")
 	public String query(ScoreQueryDto sqd, Model model) {
 		List<Score> scores = this.service.query(sqd);
