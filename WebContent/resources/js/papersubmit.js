@@ -1,7 +1,7 @@
 var su = new Object();
-
+var sub = $("#go").val();
 $.ajax({
-		url:"/TestSystem/papercreate/create?subjectId=1",
+		url:"/TestSystem/papercreate/create?subjectId="+sub ,
 		
 		success:function(result){
 			console.log(result);
@@ -126,7 +126,7 @@ $.ajax({
 				newInput1.value = result.completionset[i].completionId;
 				cc.append(newInput1);
 				
-				var input = $("<input placeholder='请输入答案' type='text'/>");
+				var input = $("<input  type='text'/>");
 				input.addClass("input");
 				cc.append(input);
 				count++;

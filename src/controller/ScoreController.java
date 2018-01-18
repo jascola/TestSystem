@@ -150,6 +150,15 @@ public class ScoreController{
 		return "/admin/queryScore.jsp";
 	}
 	
+	@RequestMapping("/querystu")
+	public String querystu(ScoreQueryDto sqd, Model model) {
+		/*System.out.println(sqd);*/
+		List<Score> scores = this.service.querystu(sqd);
+		System.out.println(scores);
+		model.addAttribute("scores", scores);
+		return "/student/queryScore.jsp";
+	}
+	
 	
 
 	@RequestMapping("/insert")
