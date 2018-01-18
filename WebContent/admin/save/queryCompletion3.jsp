@@ -5,80 +5,48 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/TestSystem/resources/css/reset.css"/>
-<link rel="stylesheet" type="text/css" href="/TestSystem/resources/css/common.css"/>
-<link rel="stylesheet" type="text/css" href="/TestSystem/resources/css/thems.css">
-<link rel="stylesheet" type="text/css" href="/TestSystem/resources/css/mycss.css">
-<script type="text/javascript" src="Assets/js/jquery-1.8.3.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-$(function(){
-	//自适应屏幕宽度
-	window.onresize=function(){ location=location }; 
-	
-	var main_h = $(window).height();
-	$('.hy_list').css('height',main_h-45+'px');
-	
-	var search_w = $(window).width()-40;
-	$('.search').css('width',search_w+'px');
-	//$('.list_hy').css('width',search_w+'px');
-});
-</script>
+<link rel="stylesheet"
+	href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script
+	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>queryCompletion</title>
 </head>
-<body onLoad="Resize();">
-<div id="right_ctn">
-	<div class="right_m">
-        <div class="hy_list">
-        	<div class="box_t">
-        	
-            	<span class="name">填空题查询</span>
-                <!--当前位置-->
-                <div class="position">
-                	<a href=""><img src="/TestSystem/resources/images/icon5.png" alt=""/></a>
-                    <a href="">首页</a>
-                    
-                </div>
-                <!--当前位置-->
-            </div>
-            <!--查询-->
-            <div class="search">
-            	<form action="/TestSystem/completion/query" method="get">
-            	<span>题目关键字：</span>
-                <div class="s_text"><input type="text" name="content"></div>
-                <span>科目：</span>
-                <div class="s_text">
-                <select id="subjectId" name="subject.subjectId">
-					<option value="0">全部科目</option>
-				</select></div>
-                <input type="submit" class="button blue" value="查询">
-                </form>
-            </div>
+<body>
+	<form action="/TestSystem/completion/query" method="get">
 
-            <div class="space_hx">&nbsp;</div>
-            
-            <table cellpadding="0" cellspacing="0" class="list_hy">
-              <tr>
-                <th scope="col">题目ID</th>
-                <th scope="col">科目名称</th>
-                <th scope="col">题目内容</th>
-                <th scope="col">题目答案</th>
-                <th scope="col" colspan="2">操作</th>
-              </tr>
-             <c:forEach items="${completions }" var="c">
+		关键字：<input type="text" name="content"><br> 
+		科目：<select id="subjectId" name="subject.subjectId">
+			<option value="0">全部科目</option>
+		</select><br>
+		 <input type="submit" value="填空题查询">
+	</form>
+
+	<table border="1px">
+		<tr>
+			<td colspan="6">query List</td>
+		</tr>
+		<tr>
+			<th>题目ID</th>
+			<th>科目名称</th>
+			<th>题目内容</th>
+			<th>题目答案</th>
+			<th colspan="2">操作</th>
+		</tr>
+
+		<c:forEach items="${completions }" var="c">
 			<tr>
 				<td>${c.completionId}</td>
 				<td>${c.subject.subjectName}</td>
 				<td>${c.content}</td>
 				<td>${c.answer}</td>
-				<td class="width_small"><button data-toggle="modal" class="button blue" data-target="#${c.completionId}a"
-						value="alter">修改</button>
-				<button data-toggle="modal" class="button red" data-target="#${c.completionId}d"
-						value="delete">删除</button></td>
+				<td><button data-toggle="modal" data-target="#${c.completionId}a"
+						value="alter">修改题目</button></td>
+				<td><button data-toggle="modal" data-target="#${c.completionId}d"
+						value="alter">删除题目</button></td>
 			</tr>
-			
+
 			<!-- 	update的调用模态框 -->
 			<div class="modal fade" id="${c.completionId}a" tabindex="-1"
 				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -140,12 +108,10 @@ $(function(){
 					</div>
 				</div>
 			</div>
+	
 			
-			</c:forEach>
-            </table>
-        </div>
-    </div>
-</div>
+		</c:forEach>
+	</table>
 </body>
 
 <script>
@@ -168,4 +134,7 @@ $(function(){
         });
 
     </script>
+
+
+
 </html>

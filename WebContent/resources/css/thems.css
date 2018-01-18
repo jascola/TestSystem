@@ -76,6 +76,19 @@
 	border:0px;
 	background:none;
 }
+
+.search .s_text select{
+	width:192px;
+	height:24px;
+	position:absolute;
+	left:7px;
+	top:3px;
+	color:#656565;
+	font-family:"寰蒋闆呴粦";
+	border:0px;
+	background:none;
+}
+
 .search .sz_text em{
 	display:inline-block;
 	*display:inline;
@@ -90,6 +103,20 @@
 	-moz-border-radius:3px;
 	-webkit-border-radius:3px;
 }
+
+select{
+                border:1px solid #DEDEDE;
+                outline: none;
+                width: 190px;
+                height: 26px;
+                line-height: 26px;
+                /* appearance: none; */
+                /* -webkit-appearance: none;
+                -moz-appearance: none; */
+                padding-left: 60px;
+                text-align: center;
+            }
+
 .btn{
 	display:inline-block;
 	*display:inline;
@@ -344,7 +371,7 @@
 	display:inline-block;
 	*display:inline;
 	zoom:1;
-	width:400px;
+	width:300px;
 	height:30px;
 	vertical-align:middle;
 	text-align:left;

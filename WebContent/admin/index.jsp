@@ -35,7 +35,7 @@
     <div class="layout_left_menu">
         <ul id="menu">
             <li class="childUlLi">
-               <a href="main.jsp"  target="menuFrame"><i class="glyph-icon icon-home"></i>首页</a>
+               <a href="index.jsp"><i class="glyph-icon icon-home"></i>首页</a>
                 
             </li>
             <li class="childUlLi">
@@ -82,7 +82,7 @@
       
         <div class="mian_content">
             <div id="page_content">
-                <iframe id="menuFrame" name="menuFrame" src="main.html" style="overflow:visible;"
+                <iframe id="menuFrame" name="menuFrame" src="main.jsp" style="overflow:visible;"
                         scrolling="yes" frameborder="no" width="100%" height="100%"></iframe>
             </div>
         </div>
