@@ -25,16 +25,30 @@ public class UserController {
 	@RequestMapping("/userlogin")
 	public String userlogin(String userName,String password,
 			Integer identity,HttpSession httpSession) {
+		
+		if(userName==null || userName=="" ||password==null || password=="" ||identity==null) {
+			String msg="用户名，密码或身份为空！";
+			httpSession.setAttribute("msg", msg);
+			return "redirect:/login.jsp";
+		}
+		try {
 		User user =this.service.queryByName(userName);
-		if(user.getPassword().equals(password)&&identity==1) {
+		if(user.getPassword().equals(password)&&identity==0 &&user.getIdentity().equals(identity)) {
+			System.out.println("学生登录");
 			httpSession.setAttribute("user", user);
-			return "student";
+			return "redirect:/student/index.jsp";
 		}
-		else if(user.getPassword().equals(password)&&identity==0) {
+		else if(user.getPassword().equals(password)&&identity==1&&user.getIdentity().equals(identity)) {
 			httpSession.setAttribute("user", user);
-			return "admin";
+			System.out.println("管理员登录");
+			return "redirect:/admin/index.jsp";
 		}
-		return "";
+		}catch (Exception e) {
+			String msg="用户名，密码或身份错误！";
+			httpSession.setAttribute("msg", msg);
+			return "redirect:/login.jsp";
+		}
+		return "redirect:/login.jsp";
 	}
 	
 	@RequestMapping(value="/logout")  
