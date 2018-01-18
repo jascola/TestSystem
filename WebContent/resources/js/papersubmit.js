@@ -18,7 +18,13 @@ $.ajax({
 				if(result.choicepaperlist[j].choice.isMulti==1){
 					
 					$("#multi").append(g);
-	
+					/*添加空行*/
+					
+					var konghang = $("<div></div>");
+					konghang.addClass("konghang");
+					$("#multi").append(konghang);
+					
+					
 					var content = $("<div>"+mu.toString()+"." +result.choicepaperlist[j].choice.content+
 							"<br>"+"</div>");
 					content.addClass("content");
@@ -47,6 +53,7 @@ $.ajax({
 						var op = $("<div>"+result.choicepaperlist[j].optionz[i].content+"</div>");
 						op.addClass("option");
 						singleoption.append(op);
+						
 					}
 					count++;
 					mu++;
@@ -55,6 +62,12 @@ $.ajax({
 				/* 单选 */
 				else{
 					$("#single").append(g);
+					/*添加空行*/
+					
+					var konghang = $("<div></div>");
+					konghang.addClass("konghang");
+					$("#single").append(konghang);
+					
 					var content = $("<div>"+sing.toString()+"." +result.choicepaperlist[j].choice.content+"</div>");
 					content.addClass("content");
 					g.append(content);
@@ -92,7 +105,16 @@ $.ajax({
 			for(var i=0;i<result.completionset.length;i++){
 				var cc = $("<div></div>");
 				cc.addClass("completion");
+				
+				/*添加空行*/
+				
+				
+				
 				$("#completion").append(cc);
+				
+				var konghang = $("<div></div>");
+				konghang.addClass("konghang");
+				$("#completion").append(konghang);
 				
 				var content = $("<div>"+count.toString()+"." +result.completionset[i].content+"</div>");
 				content.addClass("content");
@@ -118,6 +140,10 @@ $.ajax({
 				var cc = $("<div></div>");
 				cc.addClass("recogniz");
 				$("#recogniz").append(cc);
+				
+				var konghang = $("<div></div>");
+				konghang.addClass("konghang");
+				$("#recogniz").append(konghang);
 				
 				var content = $("<div>"+count.toString()+"." +result.recognizset[i].content+"</div>");
 				content.addClass(content);

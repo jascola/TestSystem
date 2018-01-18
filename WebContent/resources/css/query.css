@@ -1,0 +1,16 @@
+#contener{
+	background:white;
+	margin-left:15%;
+	width:70%;
+}
+.singleoption{
+	clear:both;
+
+}
+.radio{
+	float:left;
+	
+	}
+.konghang{
+	height:20px;
+}

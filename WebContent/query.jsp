@@ -6,38 +6,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<style>
-	
-	
-	.radio{
-	float:left;
-	
-	}
-	
-	.singleoption{
-	clear:both;
-	
-	}
-</style>
-
-<body>欢迎来到本次考试，请勿作弊！！
-<h1 id="tit" ></h1>
+<link rel="stylesheet" href="/TestSystem/resources/css/query.css" type="text/css" media="screen" />
+<body>
 <!-- 动态创建div去显示题目选项 -->
 
 <div id="contener">
 
+  欢迎来到本次考试，请勿作弊！！
+  <h1 id="tit" ></h1>
 			<div id="single">
-			一、单选题
-				
-			</div>
-			二、多选题
+			一、单选题	</div>
+			<div class="konghang"></div>
 			<div id="multi">
+			二、多选题
 			</div>
-			
+			<div class="konghang"></div>
 			<div id="completion">
 			三、填空题
 			</div>
-			
+			<div class="konghang"></div>
 			<div id="recogniz">
 			四、判断题
 			</div>
@@ -47,6 +34,8 @@
 </body>
 <script type="text/javascript" src="/TestSystem/resources/js/jquery.js"></script>
 <script type="text/javascript" src="/TestSystem/resources/js/papersubmit.js"></script>
+
+
 <script type="text/javascript">
 	
 </script>
