@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>在线考试系统管理后台 - 管理员模式</title>
+<title>在线考试系统 - 学生模式</title>
 
 <link rel="stylesheet" href="/TestSystem/resources/css/index.css" type="text/css" media="screen" />
 
@@ -16,11 +16,11 @@
 <body>
     <!--顶部-->
     <div class="layout_top_header">
-            <div style="float: left"><span style="font-size: 16px;line-height: 45px;padding-left: 20px;color: #8d8d8d">在线考试系统管理后台</h1></span></div>
+            <div style="float: left"><span style="font-size: 16px;line-height: 45px;padding-left: 20px;color: #8d8d8d">在线考试系统</h1></span></div>
             <div id="ad_setting" class="ad_setting">
                 <a class="ad_setting_a" href="javascript:; ">
                     <i class="icon-user glyph-icon" style="font-size: 20px"></i>
-                    <span>管理员</span>
+                    <span>我的主页</span>
                     <i class="icon-chevron-down glyph-icon"></i>
                 </a>
                 <ul class="dropdown-menu-uu" style="display: none" id="ad_setting_ul">
@@ -39,38 +39,17 @@
                 
             </li>
             <li class="childUlLi">
-                <a href="user.html"  target="menuFrame"> <i class="glyph-icon icon-reorder"></i>学生信息管理</a>
+                <a href="user.html"  target="menuFrame"> <i class="glyph-icon icon-reorder"></i>我的考试</a>
                 <ul>
-                    <li><a href="addUser.jsp"  target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>新增学生</a></li>
-                    <li><a href="queryUser.jsp"  target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>学生信息查询与修改</a></li>
-                    
+                    <li><a href="myexam.jsp"  target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>在线考试</a></li>
+
                 </ul>
             </li>
-            <li class="childUlLi">
-                <a href="role.html" target="menuFrame"> <i class="glyph-icon icon-reorder"></i>科目管理</a>
-                <ul>
-                    <li><a href="addSubject.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>添加科目</a></li>
-                    <li><a href="querySubject.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>科目查询与修改</a></li>
-                </ul>
-            </li>
-            
-              <li class="childUlLi">
-                <a href="role.html" target="menuFrame"> <i class="glyph-icon icon-reorder"></i>题库管理</a>
-                <ul>
-                    <li><a href="addChoice.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>添加选择题</a></li>
-                    <li><a href="addCompletion.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>添加填空题</a></li>
-                    <li><a href="addRecogniz.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>添加判断题</a></li>
-                    <li><a href="queryChoice.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>选择题查询与修改</a></li>
-                    <li><a href="queryCompletion.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>填空题查询与修改</a></li>
-                    <li><a href="queryRecogniz.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>判断题查询与修改</a></li>
-                </ul>
-            </li>
-            
+
              <li class="childUlLi">
                 <a href="role.html" target="menuFrame" > <i class="glyph-icon icon-reorder"></i>成绩查询</a>
                 <ul>
-                    <li><a href="queryScore.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>学生成绩查询与修改</a></li>
-                    
+                    <li><a href="queryScore.jsp" target="menuFrame"><i class="glyph-icon icon-chevron-right"></i>成绩</a></li>   
                 </ul>
             </li>
             

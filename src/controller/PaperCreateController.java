@@ -44,12 +44,12 @@ public class PaperCreateController {
 	@Autowired
 	private SubjectService su;
 	@RequestMapping("/requestpaper")
-	public String requestpaper() {
+	public String requestpaper(Integer subjectId,Model model) {
+		model.addAttribute("subject",subjectId);
+		System.out.println(subjectId);
 		return "/query.jsp";
 	}
-	
-	
-	
+
 	@RequestMapping(value="/create",produces = "application/json;charset=utf-8")
 	 @ResponseBody
 	public String create(Integer subjectId) {
@@ -64,7 +64,6 @@ public class PaperCreateController {
 	HashSet<Choice> choiceset = new HashSet<Choice>();
 	HashSet<Completion> completionset = new HashSet<Completion>();
 	HashSet<Recogniz> recognizset = new HashSet<Recogniz>();
-	
 	
 	int i=0,j=0,k=0;
 	int ss=0;

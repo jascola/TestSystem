@@ -50,6 +50,22 @@
 	</select>
 	
 	
+	<select id="querystu" resultMap="scores1" parameterType="entity.ScoreQueryDto">
+		SELECT *
+		FROM score a,user b,subject c 
+		<where>
+			<if test="1==1">
+				and a.UserId=b.UserId and a.SubjectId=c.SubjectId and b.userId=#{userId}
+			</if>
+			<if test="subject.subjectId!=null and subject.subjectId!=0">
+				and c.subjectId = #{subject.subjectId}
+			</if>
+			
+		</where>
+	
+	</select>
+	
+	
 	<!-- 只能更新分数 -->
 	<update id="update" parameterType="entity.Score">
 		update score set

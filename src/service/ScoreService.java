@@ -26,6 +26,10 @@ public class ScoreService {
 		return this.dao.query(sqd);
 	}
 	
+	public List<Score> querystu(ScoreQueryDto sqd) {
+		return this.dao.querystu(sqd);
+	}
+	
 	public Score queryById(Integer id) {
 		return this.dao.queryById(id);
 	}
