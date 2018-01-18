@@ -5,79 +5,49 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/TestSystem/resources/css/reset.css"/>
-<link rel="stylesheet" type="text/css" href="/TestSystem/resources/css/common.css"/>
-<link rel="stylesheet" type="text/css" href="/TestSystem/resources/css/thems.css">
-<link rel="stylesheet" type="text/css" href="/TestSystem/resources/css/mycss.css">
-<script type="text/javascript" src="Assets/js/jquery-1.8.3.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-$(function(){
-	//自适应屏幕宽度
-	window.onresize=function(){ location=location }; 
-	
-	var main_h = $(window).height();
-	$('.hy_list').css('height',main_h-45+'px');
-	
-	var search_w = $(window).width()-40;
-	$('.search').css('width',search_w+'px');
-	//$('.list_hy').css('width',search_w+'px');
-});
-</script>
+<link rel="stylesheet"
+	href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script
+	src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <title>queryScore</title>
 </head>
-<body onLoad="Resize();">
-<div id="right_ctn">
-	<div class="right_m">
-        <div class="hy_list">
-        	<div class="box_t">
-        	
-            	<span class="name">成绩查询</span>
-                <!--当前位置-->
-                <div class="position">
-                	<a href=""><img src="/TestSystem/resources/images/icon5.png" alt=""/></a>
-                    <a href="">首页</a>
-                    
-                </div>
-                <!--当前位置-->
-            </div>
-            <!--查询-->
-            <div class="search">
-            	<form action="/TestSystem/score/query" method="get">
-            	<span>用户名：</span>
-                <div class="s_text"><input type="text" name="userName"></div>
-                <span>科目：</span>
-                <div class="s_text">
-                <select id="subjectId" name="subject.subjectId">
-					<option value="0">全部科目</option>
-				</select></div>
-                <input type="submit" class="button blue" value="查询">
-                </form>
-            </div>
+<body>
 
-            <div class="space_hx">&nbsp;</div>
-            
-            <table cellpadding="0" cellspacing="0" class="list_hy">
-              <tr>
-                <th scope="col">用户ID</th>
-                <th scope="col">用户姓名</th>
-                <th scope="col">科目名称</th>
-                <th scope="col">成绩</th>
-                <th scope="col" colspan="1">操作</th>
-              </tr>
-             <c:forEach items="${scores }" var="score">
+
+	<form action="/TestSystem/score/query" method="get">
+
+		用户名：<input type="text" name="userName"><br> 
+		科目：<select id="subjectId" name="subject.subjectId">
+			<option value="0">全部科目</option>
+		</select><br>
+		 <input type="submit" value="查询分数">
+	</form>
+
+	<table border="1px">
+		<tr>
+			<td colspan="5">query List</td>
+		</tr>
+		<tr>
+			<th>用户ID</th>
+			<th>用户名</th>
+			<th>科目名称</th>
+			<th>成绩</th>
+			<th colspan="1">操作</th>
+		</tr>
+
+		<c:forEach items="${scores }" var="score">
 			<tr>
 				<td>${score.user.userId}</td>
 				<td>${score.user.userName }</td>
 				<td>${score.subject.subjectName }</td>
 				<td>${score.score }</td>
-				<td class="width_small"><button data-toggle="modal" class="button blue" data-target="#${score.scoreId}a"
-						value="alter">修改</button>
-				</td>
-			</tr>
+				<td><button data-toggle="modal" data-target="#${score.scoreId}a"
+						value="alter">修改</button></td>
 			
+			</tr>
+
 			<!-- 	update的调用模态框 -->
 			<div class="modal fade" id="${score.scoreId}a" tabindex="-1"
 				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -112,12 +82,10 @@ $(function(){
 					</div>
 				</div>
 			</div>
+
 			
-			</c:forEach>
-            </table>
-        </div>
-    </div>
-</div>
+		</c:forEach>
+	</table>
 </body>
 
 <script>
@@ -140,4 +108,7 @@ $(function(){
         });
 
     </script>
+
+
+
 </html>

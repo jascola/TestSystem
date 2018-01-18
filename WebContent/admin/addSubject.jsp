@@ -37,7 +37,7 @@ $(function(){
             	<span class="name">新增科目</span>
                 <!--当前位置-->
                 <div class="position">
-                	<a href=""><img src="Assets/images/icon5.png" alt=""/></a>
+                	<a href=""><img src="/TestSystem/resources/images/icon5.png" alt=""/></a>
                     <a href="main.jsp">首页</a>
                   
                 </div>
