@@ -6,10 +6,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="/TestSystem/resources/css/reset.css"/>
-<link rel="stylesheet" type="text/css" href="/TestSystem/resources/css/common.css"/>
-<link rel="stylesheet" type="text/css" href="/TestSystem/resources/css/thems.css">
-<link rel="stylesheet" type="text/css" href="/TestSystem/resources/css/mycss.css">
+<link rel="stylesheet" type="text/css" href="/TestSystem/resources//css/reset.css"/>
+<link rel="stylesheet" type="text/css" href="/TestSystem/resources//css/common.css"/>
+<link rel="stylesheet" type="text/css" href="/TestSystem/resources//css/thems.css">
 <script type="text/javascript" src="Assets/js/jquery-1.8.3.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -26,55 +25,40 @@ $(function(){
 	//$('.list_hy').css('width',search_w+'px');
 });
 </script>
-<title>querySubject</title>
+<title>queryUser</title>
 </head>
 <body onLoad="Resize();">
-<div id="right_ctn">
-	<div class="right_m">
-		<!--会议列表-->
-        <div class="hy_list">
-        	<div class="box_t">
-        	
-            	<span class="name">科目信息查询</span>
-                <!--当前位置-->
-                <div class="position">
-                	<a href=""><img src="/TestSystem/resources/images/icon5.png" alt=""/></a>
-                    <a href="">首页</a>
-                    
-                </div>
-                <!--当前位置-->
-            </div>
-            <!--查询-->
-            <div class="search">
-            	<form action="/TestSystem/subject/queryByName" method="get">
-            	<span>科目名称：</span>
-                <div class="s_text"><input type="text" name="userName"></div>
-                
-                <input type="submit" class="button blue" value="查询">
-                </form>
-            </div>
+	<form action="/TestSystem/user/query" method="get">
+		用户名：<input type="text" name="userName"><br> 权限：<input
+			type="text" name="identity"> <input type="submit" value="查找">
+	</form>
 
-            <div class="space_hx">&nbsp;</div>
-            
-            <table cellpadding="0" cellspacing="0" class="list_hy">
-              <tr>
-                <th scope="col">科目ID</th>
-                <th scope="col">科目名称</th>
-                <th scope="col" colspan="1">操作</th>
-              </tr>
-             <c:forEach items="${subjects}" var="p1">
+	<table border="1px">
+		<tr>
+			<td colspan="4">query List</td>
+		</tr>
+		<tr>
+			<th>用户ID</th>
+			<th>用户名</th>
+			<th>密码</th>
+			<th>身份</th>
+			<th colspan="2">操作</th>
+		</tr>
+
+		<c:forEach items="${users1 }" var="p1">
 			<tr>
-				<td>${p1.subjectId}</td>
-				<td>${p1.subjectName}</td>
-
-				<td class="width_small"><button data-toggle="modal" class="button blue" data-target="#${p1.subjectId}a"
-						value="alter">修改</button>
-				<button data-toggle="modal" class="button red" data-target="#${p1.subjectId}d"
+				<td>${p1.userId}</td>
+				<td>${p1.userName }</td>
+				<td>${p1.password }</td>
+				<td>${p1.identity }</td>
+				<td><button data-toggle="modal" data-target="#${p1.userId}a"
+						value="alter">修改</button></td>
+				<td><button data-toggle="modal" data-target="#${p1.userId}d"
 						value="delete">删除</button></td>
 			</tr>
-			
+
 			<!-- 	update的调用模态框 -->
-			<div class="modal fade" id="${p1.subjectId}a" tabindex="-1"
+			<div class="modal fade" id="${p1.userId}a" tabindex="-1"
 				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -84,13 +68,17 @@ $(function(){
 							<h4 class="modal-title" id="myModalLabel">修改信息</h4>
 						</div>
 						<div class="modal-body">
-							<form role="form" action="/TestSystem/subject/update" method="get">
+							<form role="form" action="/TestSystem/user/update" method="get">
 								<div class="form-group">
-									<label for="id">科目id</label> <input type="text"
-										class="form-control" name="subjectId" value="${p1.subjectId}"
-										readonly> <label for="name">科目名称</label> <input
-										type="text" class="form-control" name="subjectName"
-										value="${p1.subjectName}"> 
+									<label for="id">用户id</label> <input type="text"
+										class="form-control" name="userId" value="${p1.userId}"
+										readonly> <label for="name">用户名</label> <input
+										type="text" class="form-control" name="userName"
+										value="${p1.userName}"> <label for="password">密码</label>
+									<input type="text" class="form-control" name="password"
+										value="${p1.password}"> <label for="identity">权限</label>
+									<input type="text" class="form-control" name="identity"
+										value="${p1.identity}">
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default"
@@ -104,7 +92,7 @@ $(function(){
 			</div>
 
 			<!--       delete的调用模态框   -->
-			<div class="modal fade" id="${p1.subjectId}d" tabindex="-1"
+			<div class="modal fade" id="${p1.userId}d" tabindex="-1"
 				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
@@ -114,10 +102,10 @@ $(function(){
 							<h4 class="modal-title" id="myModalLabel">确认删除</h4>
 						</div>
 						<div class="modal-body">
-							<form role="form" action="/TestSystem/subject/delete" method="get">
+							<form role="form" action="/TestSystem/user/delete" method="get">
 								<div class="form-group">
 									<input type="hidden" class="form-control" name="id"
-										value="${p1.subjectId}"> <label>确定要删除此条记录吗？</label>
+										value="${p1.userId}"> <label>确定要删除此条记录吗？</label>
 								</div>
 								<div class="modal-footer">
 									<button type="button" class="btn btn-default"
@@ -129,12 +117,7 @@ $(function(){
 					</div>
 				</div>
 			</div>
-		
-			
-			</c:forEach>
-            </table>
-        </div>
-    </div>
-</div>
+		</c:forEach>
+	</table>
 </body>
 </html>

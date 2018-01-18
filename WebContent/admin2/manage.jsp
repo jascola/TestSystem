@@ -12,6 +12,7 @@
 		left:200px;
 		width:500px;
 		height:500px;
+		/* background-color: yellow; */
 	}
 </style>
 </head>
