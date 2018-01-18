@@ -64,5 +64,9 @@
 		resultType="entity.Choice">
 		select * from choice where ChoiceId=#{choiceId}
 	</select>
-
+	
+<select id="queryBySubjectId" parameterType="java.lang.Integer"
+		resultType="entity.Choice">
+		select * from choice where SubjectId=#{subject.subjectId}
+	</select>
 </mapper>

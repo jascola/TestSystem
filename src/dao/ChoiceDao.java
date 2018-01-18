@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import entity.Choice;
 import entity.ChoiceQueryDto;
+import entity.Subject;
 
 
 @Repository
@@ -22,4 +23,6 @@ public interface ChoiceDao {
 	int update(ChoiceQueryDto cqd);
 	
 	List<Choice> query(ChoiceQueryDto cqd);
+	
+	List<Choice> queryBySubjectId(Integer subjectId);
 }

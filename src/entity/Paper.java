@@ -8,29 +8,23 @@ public class Paper {
 	private List<ChoicePaper> choicepaperlist;
 	private Set<Completion> completionset;
 	private Set<Recogniz> recognizset;
-	public Paper(List<ChoicePaper> choicepaperlist, Set<Completion> completionset, Set<Recogniz> recognizset) {
+	private Subject subject;
+	public Paper() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Paper(List<ChoicePaper> choicepaperlist, Set<Completion> completionset, Set<Recogniz> recognizset,
+			Subject subject) {
 		super();
 		this.choicepaperlist = choicepaperlist;
 		this.completionset = completionset;
 		this.recognizset = recognizset;
+		this.subject = subject;
 	}
-	public List<ChoicePaper> getChoicepaperlist() {
-		return choicepaperlist;
-	}
-	public void setChoicepaperlist(List<ChoicePaper> choicepaperlist) {
-		this.choicepaperlist = choicepaperlist;
-	}
-	public Set<Completion> getCompletionset() {
-		return completionset;
-	}
-	public void setCompletionset(Set<Completion> completionset) {
-		this.completionset = completionset;
-	}
-	public Set<Recogniz> getRecognizset() {
-		return recognizset;
-	}
-	public void setRecognizset(Set<Recogniz> recognizset) {
-		this.recognizset = recognizset;
+	@Override
+	public String toString() {
+		return "Paper [choicepaperlist=" + choicepaperlist + ", completionset=" + completionset + ", recognizset="
+				+ recognizset + ", subject=" + subject + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -39,6 +33,7 @@ public class Paper {
 		result = prime * result + ((choicepaperlist == null) ? 0 : choicepaperlist.hashCode());
 		result = prime * result + ((completionset == null) ? 0 : completionset.hashCode());
 		result = prime * result + ((recognizset == null) ? 0 : recognizset.hashCode());
+		result = prime * result + ((subject == null) ? 0 : subject.hashCode());
 		return result;
 	}
 	@Override
@@ -65,15 +60,37 @@ public class Paper {
 				return false;
 		} else if (!recognizset.equals(other.recognizset))
 			return false;
+		if (subject == null) {
+			if (other.subject != null)
+				return false;
+		} else if (!subject.equals(other.subject))
+			return false;
 		return true;
 	}
-	@Override
-	public String toString() {
-		return "Paper [choicepaperlist=" + choicepaperlist + ", completionset=" + completionset + ", recognizset="
-				+ recognizset + "]";
+	public List<ChoicePaper> getChoicepaperlist() {
+		return choicepaperlist;
 	}
-	public Paper() {
-		super();
-		// TODO Auto-generated constructor stub
+	public void setChoicepaperlist(List<ChoicePaper> choicepaperlist) {
+		this.choicepaperlist = choicepaperlist;
 	}
+	public Set<Completion> getCompletionset() {
+		return completionset;
+	}
+	public void setCompletionset(Set<Completion> completionset) {
+		this.completionset = completionset;
+	}
+	public Set<Recogniz> getRecognizset() {
+		return recognizset;
+	}
+	public void setRecognizset(Set<Recogniz> recognizset) {
+		this.recognizset = recognizset;
+	}
+	public Subject getSubject() {
+		return subject;
+	}
+	public void setSubject(Subject subject) {
+		this.subject = subject;
+	}
+	
+	
 }

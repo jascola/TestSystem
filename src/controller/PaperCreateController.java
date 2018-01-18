@@ -21,10 +21,12 @@ import entity.Completion;
 import entity.Optionz;
 import entity.Paper;
 import entity.Recogniz;
+import entity.Subject;
 import service.ChoiceService;
 import service.CompletionService;
 import service.OptionzService;
 import service.RecognizService;
+import service.SubjectService;
 
 @Controller
 @Scope
@@ -39,10 +41,22 @@ public class PaperCreateController {
 	private RecognizService recogniz;
 	@Autowired
 	private OptionzService optionz;
+	@Autowired
+	private SubjectService su;
+	@RequestMapping("/requestpaper")
+	public String requestpaper() {
+		return "/query.jsp";
+	}
+	
+	
+	
 	@RequestMapping(value="/create",produces = "application/json;charset=utf-8")
 	 @ResponseBody
-	public String create() {
-	List<Choice> choices =this.choice.queryAll();
+	public String create(Integer subjectId) {
+		Subject subject = this.su.queryById(subjectId);
+		
+		
+	List<Choice> choices =this.choice.queryBySubjectId(subjectId);
 	List<Completion> completions =this.completion.queryAll();	
 	List<Recogniz> recognizs =this.recogniz.queryAll();	
 	
@@ -53,16 +67,23 @@ public class PaperCreateController {
 	
 	
 	int i=0,j=0,k=0;
-	while(i<=2) {
+	int ss=0;
+	while(i<=9) {
 		 int max=choices.size();
 	     Random random = new Random();
 	     int s = random.nextInt(max);
 	     /*System.out.println(s);*/
+	     if(ss==5&&choices.get(s).getIsMulti()==1) {
+	    	 continue;
+	     }
 	    if( choiceset.add(choices.get(s))) {
 	    	i++;
+	    	if(choices.get(s).getIsMulti()==1) {
+	    		ss++;
+	    	}
 	    }
 	}
-	while(j<=2) {
+	while(j<=4) {
 		 int max=completions.size();
 	     Random random = new Random();
 	     int s = random.nextInt(max);	     
@@ -71,7 +92,7 @@ public class PaperCreateController {
 	    	j++;
 	    }
 	}
-	while(k<=2) {
+	while(k<=4) {
 		 int max=recognizs.size();
 	     Random random = new Random();	     
 	     int s = random.nextInt(max);
@@ -93,6 +114,7 @@ public class PaperCreateController {
 	paper.setCompletionset(completionset);
 	paper.setChoicepaperlist(choicePapers);
 	paper.setRecognizset(recognizset);
+	paper.setSubject(subject);
 	String jsonString = JSONObject.toJSONString(paper);
 	return jsonString;
 	/*return "/query.jsp";*/

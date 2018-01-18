@@ -19,26 +19,30 @@
 	
 	}
 </style>
-<input  type="button" value="go" onClick="fu()"/>
-<body>欢迎来到本次考试，请勿作弊！！
 
+<body>欢迎来到本次考试，请勿作弊！！
+<h1 id="tit" ></h1>
 <!-- 动态创建div去显示题目选项 -->
 
 <div id="contener">
+
 			<div id="single">
+			一、单选题
 				
 			</div>
-			
+			二、多选题
 			<div id="multi">
 			</div>
 			
 			<div id="completion">
+			三、填空题
 			</div>
 			
 			<div id="recogniz">
+			四、判断题
 			</div>
 		</div>
-
+<input  type="button" value="提交试卷" onClick="fu()"/>
 
 </body>
 <script type="text/javascript" src="/TestSystem/resources/js/jquery.js"></script>

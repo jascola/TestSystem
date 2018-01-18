@@ -14,7 +14,7 @@
 	<insert id="insert" parameterType="entity.Score">
 		insert into
 		score(UserId,SubjectId,Score)
-		values(#{userId},#{subjectId},#{score})
+		values(#{user.userId},#{subject.subjectId},#{score})
 	</insert>
 	
 
