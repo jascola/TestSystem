@@ -2,15 +2,20 @@ $.ajax({
 		url:"/TestSystem/papercreate/create",
 		success:function(result){
 			console.log(result);
+			var count=1;var mu =6;var sing=1;
 			/* 生成单选与多选题 */
 			for(var j=0;j<result.choicepaperlist.length;j++){
 				var g=$("<div></div>");
 				g.addClass("questions");
+				
+				
+				
 				if(result.choicepaperlist[j].choice.isMulti==1){
 					
 					$("#multi").append(g);
 	
-					var content = $("<div>"+result.choicepaperlist[j].choice.content+"<br>"+"</div>");
+					var content = $("<div>"+mu.toString()+"." +result.choicepaperlist[j].choice.content+
+							"<br>"+"</div>");
 					content.addClass("content");
 					g.append(content);
 					
@@ -38,13 +43,14 @@ $.ajax({
 						op.addClass("option");
 						singleoption.append(op);
 					}
-					
+					count++;
+					mu++;
 				}
 
 				/* 单选 */
 				else{
 					$("#single").append(g);
-					var content = $("<div>"+result.choicepaperlist[j].choice.content+"</div>");
+					var content = $("<div>"+sing.toString()+"." +result.choicepaperlist[j].choice.content+"</div>");
 					content.addClass("content");
 					g.append(content);
 					/* 存题号 */
@@ -71,6 +77,8 @@ $.ajax({
 						op.addClass("option");
 						singleoption.append(op);
 					}
+					count++;
+					sing++;
 				}
 			}
 
@@ -81,7 +89,7 @@ $.ajax({
 				cc.addClass("completion");
 				$("#completion").append(cc);
 				
-				var content = $("<div>"+result.completionset[i].content+"</div>");
+				var content = $("<div>"+count.toString()+"." +result.completionset[i].content+"</div>");
 				content.addClass("content");
 				cc.append(content);
 				/* 存题号 */
@@ -94,7 +102,7 @@ $.ajax({
 				var input = $("<input placeholder='请输入答案' type='text'/>");
 				input.addClass("input");
 				cc.append(input);
-				
+				count++;
 			}
 			
 			
@@ -106,7 +114,7 @@ $.ajax({
 				cc.addClass("recogniz");
 				$("#recogniz").append(cc);
 				
-				var content = $("<div>"+result.recognizset[i].content+"</div>");
+				var content = $("<div>"+count.toString()+"." +result.recognizset[i].content+"</div>");
 				content.addClass(content);
 				cc.append(content);
 				
@@ -126,7 +134,7 @@ $.ajax({
 					singleoption.addClass("singleoption");
 					cc.append(singleoption);
 					/*  radio相同题 name相同，不同题不同,value中存储 关联答案 */
-					var radio =$("<input type='radio' name='"+result.recognizset[i].recognizId+"' value='"+ ss[j]+"' />");
+					var radio =$("<input type='radio' name='"+result.recognizset[i].recognizId+"' value='"+result.recognizset[i].answer+"' />");
 					radio.addClass("radio");
 					singleoption.append(radio); 
 					
@@ -135,6 +143,7 @@ $.ajax({
 					op.addClass("option");
 					singleoption.append(op);
 				}
+				count++;
 			}
 	
 		}
@@ -171,7 +180,7 @@ for(var i=0;i<multiIds.length;i++){
 		var s={"singleId":singleIds[i].value,"optionzId":a};
 		singleanswers.push(s);	
 	} 
-	
+	console.log(singleanswers);
 	
 	/* 填空题的数据（利用隐藏的input存id），包含题目id，和答案，预备打包成json */
 	var comletionIds =document.getElementsByName("completionId");
@@ -183,9 +192,9 @@ for(var i=0;i<multiIds.length;i++){
 		coanswers.push(s);	
 	} 
 /* 生成json对象 */
-	console.log(coanswers);
+	
 	/* json转成json字符串 */
-	console.log(JSON.stringify(coanswers));
+	
 	/* [{"id":id,"an",a},{}]  json格式*/
 	var recognizIds =document.getElementsByName("recognizId");
 	var reanswers = new Array();/* json数组 */
@@ -197,11 +206,15 @@ for(var i=0;i<multiIds.length;i++){
 	} 
 	/* 生成json对象 */
 	
-	console.log(reanswers);
+	
 	
 	/* json转成json字符串 */
-	console.log(JSON.stringify(reanswers));
 	
+	
+	console.log(multianswers);
+	console.log(singleanswers);
+	console.log(coanswers);
+	console.log(reanswers);
 	
 	var data={
 			multianswers:multianswers,

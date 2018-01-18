@@ -41,8 +41,8 @@ public class PaperCreateController {
 	private OptionzService optionz;
 	@RequestMapping(value="/create",produces = "application/json;charset=utf-8")
 	 @ResponseBody
-	public String create() {
-	List<Choice> choices =this.choice.queryAll();
+	public String create(Integer subjectId) {
+	List<Choice> choices =this.choice.queryBySubjectId(subjectId);
 	List<Completion> completions =this.completion.queryAll();	
 	List<Recogniz> recognizs =this.recogniz.queryAll();	
 	
@@ -53,16 +53,23 @@ public class PaperCreateController {
 	
 	
 	int i=0,j=0,k=0;
-	while(i<=2) {
+	int ss=0;
+	while(i<=9) {
 		 int max=choices.size();
 	     Random random = new Random();
 	     int s = random.nextInt(max);
 	     /*System.out.println(s);*/
+	     if(ss==5&&choices.get(s).getIsMulti()==1) {
+	    	 continue;
+	     }
 	    if( choiceset.add(choices.get(s))) {
 	    	i++;
+	    	if(choices.get(s).getIsMulti()==1) {
+	    		ss++;
+	    	}
 	    }
 	}
-	while(j<=2) {
+	while(j<=4) {
 		 int max=completions.size();
 	     Random random = new Random();
 	     int s = random.nextInt(max);	     
@@ -71,7 +78,7 @@ public class PaperCreateController {
 	    	j++;
 	    }
 	}
-	while(k<=2) {
+	while(k<=4) {
 		 int max=recognizs.size();
 	     Random random = new Random();	     
 	     int s = random.nextInt(max);

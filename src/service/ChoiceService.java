@@ -14,6 +14,10 @@ import entity.ChoiceQueryDto;
 public class ChoiceService {
 	@Autowired
 	private ChoiceDao dao;
+	public List<Choice> queryBySubjectId(Integer subjectId){
+		return this.dao.queryBySubjectId(subjectId);
+	}
+	
 	
 	public List<Choice> queryAll() {
 		return this.dao.queryAll();
@@ -42,4 +46,6 @@ public class ChoiceService {
 	public int delete(Integer id) {
 		return this.dao.delete(id);
 	}
+	
+	
 }
