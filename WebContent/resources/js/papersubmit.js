@@ -1,5 +1,6 @@
-var su = new Object();
+ var su = new Object();
 var sub = $("#go").val();
+console.log("sub:"+sub);
 $.ajax({
 		url:"/TestSystem/papercreate/create?subjectId="+sub ,
 		
@@ -86,7 +87,7 @@ $.ajax({
 						/* 用j来做radio的name value中存的是选项号*/
 						/* 根据题号，和选项号得到答案 */
 				
-						var radio =$("<input type='radio' name='"+result.choicepaperlist[j].choice.choiceId+"' value='"+
+						var radio =$("<input type='radio' name='sin"+result.choicepaperlist[j].choice.choiceId+"' value='"+
 								result.choicepaperlist[j].optionz[i].optionzId+"' />");
 						radio.addClass("radio");
 						singleoption.append(radio);
@@ -165,7 +166,7 @@ $.ajax({
 					singleoption.addClass("singleoption");
 					cc.append(singleoption);
 					/*  radio相同题 name相同，不同题不同,value中存储 关联答案 */
-					var radio =$("<input type='radio' name='"+result.recognizset[i].recognizId+"' value='"+result.recognizset[i].answer+"' />");
+					var radio =$("<input type='radio' name= 're"+result.recognizset[i].recognizId+"' value='"+j.toString()+"' />");
 					radio.addClass("radio");
 					singleoption.append(radio); 
 					
@@ -206,7 +207,7 @@ for(var i=0;i<multiIds.length;i++){
 	var singleanswers = new Array();
 	for(var i=0;i<singleIds.length;i++){
 		
-		var a = $("input[name='"+singleIds[i].value+"']:checked").val();
+		var a = $("input[name='sin"+singleIds[i].value+"']:checked").val();
 		/* console.log(a); */
 		var s={"singleId":singleIds[i].value,"optionzId":a};
 		singleanswers.push(s);	
@@ -231,7 +232,7 @@ for(var i=0;i<multiIds.length;i++){
 	var reanswers = new Array();/* json数组 */
 
 	 for(var i=0;i<recognizIds.length;i++){
-		 var a = $("input[name='"+recognizIds[i].value+"']:checked").val();
+		 var a = $("input[name='re"+recognizIds[i].value+"']:checked").val();
 		 var s ={"recogniz":recognizIds[i].value,"reanswer":a};
 		 reanswers.push(s); 
 	} 
@@ -267,7 +268,7 @@ for(var i=0;i<multiIds.length;i++){
 		}
 	});
 	
-	
+	window.location.href = "/TestSystem/student/main.jsp";
 	
 	
 	/*$.ajax({

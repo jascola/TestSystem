@@ -56,5 +56,10 @@
 		resultType="entity.Completion">
 		select * from completion where CompletionId=#{completionId}
 	</select>
+	
+	<select id="queryBySubjectId" parameterType="java.lang.Integer"
+		resultType="entity.Completion">
+		select * from completion where SubjectId=#{subject.subjectId}
+	</select>
 
 </mapper>

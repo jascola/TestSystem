@@ -7,10 +7,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
+<link rel="stylesheet" href="/TestSystem/resources/css/mycss.css" type="text/css"  />
 <link rel="stylesheet" href="/TestSystem/resources/css/query.css" type="text/css" media="screen" />
 <body>
 <!-- 动态创建div去显示题目选项 -->
-<input type="hidden" id="go" value="${subjectId}"/>
+<input type="hidden" id="go" value="${sessionScope.testsub}"/>
 
 
 <div id="contener">
@@ -31,8 +32,9 @@
 			<div id="recogniz">
 			四、判断题
 			</div>
+			<input  type="button" class="button blue button_l" value="提交试卷" onClick="fu()"/>
 		</div>
-<input  type="button" value="提交试卷" onClick="fu()"/>
+
 
 </body>
 <script type="text/javascript" src="/TestSystem/resources/js/jquery.js"></script>

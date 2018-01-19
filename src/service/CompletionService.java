@@ -17,7 +17,9 @@ public class CompletionService {
 	public List<Completion> queryAll() {
 		return this.dao.queryAll();
 	}
-	
+	public List<Completion> queryBySubjectId(Integer subjectId) {
+		return this.dao.queryBySubjectId(subjectId);
+	}
 	public List<Completion> query(Completion com) {
 		return this.dao.query(com);
 	}

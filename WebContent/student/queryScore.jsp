@@ -46,7 +46,7 @@ $(function(){
             <!--查询-->
             <div class="search">
             	<form action="/TestSystem/score/querystu" method="get">
-                <input type="hidden" name="userId" value="1">
+                <input type="hidden" name="userId" value="${sessionScope.user.userId}">
                 <span>科目：</span>
                 <div class="s_text">
                 <select id="subjectId" name="subject.subjectId">
@@ -64,7 +64,7 @@ $(function(){
                 <th scope="col">用户姓名</th>
                 <th scope="col">科目名称</th>
                 <th scope="col">成绩</th>
-                <th scope="col" colspan="1">操作</th>
+                
               </tr>
              <c:forEach items="${scores }" var="score">
 			<tr>
@@ -72,45 +72,8 @@ $(function(){
 				<td>${score.user.userName }</td>
 				<td>${score.subject.subjectName }</td>
 				<td>${score.score }</td>
-				<td class="width_small"><button data-toggle="modal" class="button blue" data-target="#${score.scoreId}a"
-						value="alter">修改</button>
-				</td>
 			</tr>
 			
-			<!-- 	update的调用模态框 -->
-			<div class="modal fade" id="${score.scoreId}a" tabindex="-1"
-				role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal"
-								aria-hidden="true">&times;</button>
-							<h4 class="modal-title" id="myModalLabel">修改信息</h4>
-						</div>
-						<div class="modal-body">
-							<form role="form" action="/TestSystem/score/update" method="get">
-								<div class="form-group">
-								<input type="hidden" name="scoreId" value="${score.scoreId}"/>
-									<label for="id">用户id</label> <input type="text"
-										class="form-control" name="user.userId" value="${score.user.userId}"
-										readonly> <label for="name">用户名</label> <input
-										type="text" class="form-control" name="user.userName"
-										value="${score.user.userName}" readonly> <label for="subjectName">科目名称</label>
-									<input type="text" class="form-control" name="subject.subjectName"
-										value="${score.subject.subjectName }" readonly> <label for="score">成绩</label>
-									<input type="text" class="form-control" name="score"
-										value="${score.score}" >
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default"
-										data-dismiss="modal">关闭</button>
-									<button type="submit" class="btn btn-primary">提交更改</button>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
 			
 			</c:forEach>
             </table>
