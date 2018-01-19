@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import entity.Choice;
 import entity.Completion;
 import entity.Optionz;
 import entity.Subject;
@@ -22,4 +23,6 @@ public interface CompletionDao {
 	int delete(Integer id);
 	
 	int update(Completion com);
+	
+	List<Completion> queryBySubjectId(Integer subjectId);
 }

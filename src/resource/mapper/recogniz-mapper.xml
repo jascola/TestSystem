@@ -56,5 +56,8 @@
 		resultType="entity.Recogniz">
 		select * from recogniz where RecognizId=#{recognizId}
 	</select>
-
+<select id="queryBySubjectId" parameterType="java.lang.Integer"
+		resultType="entity.Recogniz">
+		select * from recogniz where SubjectId=#{subject.subjectId}
+	</select>
 </mapper>

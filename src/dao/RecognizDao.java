@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import entity.Choice;
 import entity.Recogniz;
 @Repository
 public interface RecognizDao {
@@ -19,4 +20,6 @@ public interface RecognizDao {
 	int delete(Integer id);
 	
 	int update(Recogniz rec);
+	
+	List<Recogniz> queryBySubjectId(Integer subjectId);
 }

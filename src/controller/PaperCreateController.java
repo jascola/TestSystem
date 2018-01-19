@@ -61,8 +61,8 @@ public class PaperCreateController {
 		
 		
 	List<Choice> choices =this.choice.queryBySubjectId(subjectId);
-	List<Completion> completions =this.completion.queryAll();	
-	List<Recogniz> recognizs =this.recogniz.queryAll();	
+	List<Completion> completions =this.completion.queryBySubjectId(subjectId);
+	List<Recogniz> recognizs =this.recogniz.queryBySubjectId(subjectId);
 	
 	/*System.out.println(choices.size()+" "+completions.size()+" "+recognizs.size());*/
 	HashSet<Choice> choiceset = new HashSet<Choice>();

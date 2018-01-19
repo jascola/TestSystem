@@ -16,6 +16,11 @@ public class RecognizService {
 
 	@Autowired
 	private RecognizDao dao;
+	public List<Recogniz> queryBySubjectId(Integer subjectId) {
+		/*System.out.println("size:"+this.dao.queryAll().size());*/
+		return this.dao.queryBySubjectId(subjectId);
+	}
+	
 	public List<Recogniz> queryAll() {
 		/*System.out.println("size:"+this.dao.queryAll().size());*/
 		return this.dao.queryAll();

@@ -1,4 +1,4 @@
-var su = new Object();
+ var su = new Object();
 var sub = $("#go").val();
 console.log("sub:"+sub);
 $.ajax({
