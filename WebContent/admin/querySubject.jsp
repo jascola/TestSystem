@@ -48,7 +48,7 @@ $(function(){
             <div class="search">
             	<form action="/TestSystem/subject/queryByName" method="get">
             	<span>科目名称：</span>
-                <div class="s_text"><input type="text" name="userName"></div>
+                <div class="s_text"><input type="text" name="subjectName"></div>
                 
                 <input type="submit" class="button blue" value="查询">
                 </form>
@@ -62,7 +62,7 @@ $(function(){
                 <th scope="col">科目名称</th>
                 <th scope="col" colspan="1">操作</th>
               </tr>
-             <c:forEach items="${subjects}" var="p1">
+             <c:forEach items="${subjectN}" var="p1">
 			<tr>
 				<td>${p1.subjectId}</td>
 				<td>${p1.subjectName}</td>

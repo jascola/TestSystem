@@ -50,7 +50,7 @@ $(function(){
                 <div class="s_text"><input type="text" name="content"></div>
                 <span>科目：</span>
                 <div class="s_text">
-                <select id="subjectId" name="subject.subjectId">
+                <select id="subjectId" name="subjectId">
 					<option value="0">全部科目</option>
 				</select></div>
                 <input type="submit" class="button blue" value="查询">

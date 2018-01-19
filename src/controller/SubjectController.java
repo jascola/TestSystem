@@ -62,7 +62,7 @@ public class SubjectController {
 	public String queryByName(String subjectName,Model model) {
 		System.out.println("ready to search..."+ " name:"+ subjectName);
 		List<Subject> subjects = this.service.queryByName(subjectName);
-		model.addAttribute("subjects", subjects);
+		model.addAttribute("subjectN", subjects);
 		System.out.println("queryByName success");
 		return "/admin/querySubject.jsp";
 	}
